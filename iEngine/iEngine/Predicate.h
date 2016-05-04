@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <vector>
+#include <map>
 #include <string>
 
 #ifndef Predicate_h
@@ -26,6 +27,13 @@ private:
 public:
     Predicate();
     Predicate(string aInputString); // Default Constructor
+    
+    // Member Functions
+    bool evaluvate(map<string,int> aKeyValues);
+    bool simplify();
+    
+    //friend operators
+    friend ostream& operator<<(ostream& aOStream ,Predicate& aPredicate);
 };
 
 #endif /* Predicate_h */
