@@ -11,18 +11,11 @@ Utilities::~Utilities()
 {
 }
 
-Predicate Utilities::spliceString(char aString[])
-{
-	char* lPredicates;
-	vector<Predicate> result;
-	lPredicates = strtok(aString, ";");
-	result.push_back(lPredicates)
-	while (lPredicates != NULL)
-	{
 
-		lPredicates = strtok(NULL, ";");
-		result.push_back(lPredicates)
-	}
-
-	return result;
+vector<string> Utilities::splice(string str, char delimiter) {
+    vector<string> internal;
+    stringstream ss(str);
+    string tok;
+    while(getline(ss, tok, delimiter)) internal.push_back(tok);
+    return internal;
 }

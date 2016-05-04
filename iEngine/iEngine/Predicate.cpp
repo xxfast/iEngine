@@ -9,6 +9,7 @@
 
 #include <sstream>
 #include "Predicate.h"
+#include "Utilities.h"
 
 using namespace std;
 
@@ -20,14 +21,7 @@ Predicate::Predicate()
 
 Predicate::Predicate(string aInputString)
 {
-    vector<string> lStrings =  split(aInputString,';');
+    vector<string> lStrings =  Utilities::splice(aInputString,';');
     cout << lStrings[0] << endl;
 }
 
-vector<string> Predicate::split(string str, char delimiter) {
-    vector<string> internal;
-    stringstream ss(str);
-    string tok;
-    while(getline(ss, tok, delimiter)) internal.push_back(tok);
-    return internal;
-}
