@@ -25,3 +25,7 @@ Predicate::Predicate(string aInputString)
     cout << lStrings[0] << endl;
 }
 
+ostream& operator<<(ostream& aOStream ,Predicate& aPredicate)
+{
+    return aOStream;
+}
