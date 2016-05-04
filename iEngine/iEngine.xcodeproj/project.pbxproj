@@ -31,6 +31,7 @@
 		D353C91C1CD99F78004963A1 /* Predicate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Predicate.cpp; sourceTree = "<group>"; };
 		D353C9211CD9A9A1004963A1 /* Utilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utilities.cpp; sourceTree = "<group>"; };
 		D353C9221CD9A9A1004963A1 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		D353C9271CD9BB97004963A1 /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +64,7 @@
 		D353C9121CD99631004963A1 /* iEngine */ = {
 			isa = PBXGroup;
 			children = (
+				D353C9271CD9BB97004963A1 /* test.txt */,
 				D353C9211CD9A9A1004963A1 /* Utilities.cpp */,
 				D353C9221CD9A9A1004963A1 /* Utilities.h */,
 				D353C9131CD99631004963A1 /* main.cpp */,
