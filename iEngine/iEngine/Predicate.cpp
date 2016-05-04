@@ -27,5 +27,9 @@ Predicate::Predicate(string aInputString)
 
 ostream& operator<<(ostream& aOStream ,Predicate& aPredicate)
 {
+    for(int i=0;i<aPredicate.fConnectives.size();i++)
+    {
+        aOStream << aPredicate.fVariables[i] << " " << aPredicate.fConnectives[i] << " " << aPredicate.fVariables[i+1];
+    }
     return aOStream;
 }
