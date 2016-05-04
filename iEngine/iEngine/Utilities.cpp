@@ -13,13 +13,15 @@ Utilities::~Utilities()
 
 Predicate Utilities::spliceString(char aString[])
 {
-	char* lDelimiter;
-	lDelimiter = strtok(aString, ";");
-
-	Predicate result[];
-	while (lDelimiter != NULL)
+	char* lPredicates;
+	vector<Predicate> result;
+	lPredicates = strtok(aString, ";");
+	result.push_back(lPredicates)
+	while (lPredicates != NULL)
 	{
-		result[]
+
+		lPredicates = strtok(NULL, ";");
+		result.push_back(lPredicates)
 	}
 
 	return result;
