@@ -21,15 +21,16 @@ Predicate::Predicate()
 
 Predicate::Predicate(string aInputString)
 {
-    vector<string> lStrings =  Utilities::splice(aInputString,';');
-    cout << lStrings[0] << endl;
+    flVal = aInputString[0];
+    fRVal = aInputString[aInputString.length()-1];
+    if(aInputString.length()>=4)
+        fConnective = Utilities::stringToConnective(aInputString.substr(1,2));
+    else
+        fConnective = Utilities::stringToConnective(aInputString.substr(1,1));
+    
 }
 
 ostream& operator<<(ostream& aOStream ,Predicate& aPredicate)
 {
-    for(int i=0;i<aPredicate.fConnectives.size();i++)
-    {
-        aOStream << aPredicate.fVariables[i] << " " << aPredicate.fConnectives[i] << " " << aPredicate.fVariables[i+1];
-    }
     return aOStream;
 }

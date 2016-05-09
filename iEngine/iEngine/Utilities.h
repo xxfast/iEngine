@@ -17,11 +17,12 @@ public:
 	//Splice the string and return a predicate object
     static vector<string> splice(string str, char delimiter);
     
-    /* Uncomment once implemented
 
 	//Convert the String to a Connective
 	static Connective stringToConnective(string aString);
-
+    
+    /* Uncomment once implemented
+     
 	//Convert the String to a Connective
 	static string connectinveToString(Connective aConnective);
     

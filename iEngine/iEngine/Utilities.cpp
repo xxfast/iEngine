@@ -20,3 +20,7 @@ vector<string> Utilities::splice(string str, char delimiter)
     return internal;
 }
 
+Connective Utilities::stringToConnective(string aString)
+{
+    return Connective::IMPLY;
+}

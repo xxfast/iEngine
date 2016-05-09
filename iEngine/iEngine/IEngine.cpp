@@ -11,7 +11,23 @@ IEngine::~IEngine()
 {
 }
 
+bool IEngine::evaluateUsingTruthTable()
+{
+    
+    return false;
+}
+
 bool IEngine::evaluate(Method aMethod)
 {
-    return true;
+    bool result;
+    switch (aMethod)
+    {
+        case TT:
+            result = evaluateUsingTruthTable();
+            break;
+        default:
+            result = evaluateUsingTruthTable(); //Defaults to TT
+            break;
+    }
+    return result;
 }
