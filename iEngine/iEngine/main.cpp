@@ -39,10 +39,10 @@ int main(int argc, char* argv[])
 	cout << "iEngine Driver Program" << endl;
     
 	Predicate myPredicate("P=>E;");
-    vector<Predicate> myPredicates = Utilities::generatePredicates(lInput);
+    vector<Predicate>* myPredicates = new vector<Predicate>();//Utilities::generatePredicates(lInput);
     
     // Instatiate iEngine on the Heap
-    IEngine* testEngine = new IEngine(myPredicates);
+    IEngine* testEngine = new IEngine(*myPredicates);
     cout << testEngine->evaluate(Method::TT);
     
     

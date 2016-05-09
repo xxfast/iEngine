@@ -19,3 +19,4 @@ vector<string> Utilities::splice(string str, char delimiter)
     while(getline(ss, tok, delimiter)) internal.push_back(tok);
     return internal;
 }
+
