@@ -42,6 +42,5 @@ static string connectiveToString(Connective aConnective)
 	else if (aConnective == NOT)result = "~";
 	else if (aConnective == AND)result = "^";
 	else result = "v";
-
 	return result;
 }

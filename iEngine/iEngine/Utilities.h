@@ -16,12 +16,12 @@ public:
     
 	//Splice the string and return a predicate object
     static vector<string> splice(string aString, char aDelimiter);
-    
-   
-
+ 
 	//Convert the String to a Connective
 	static Connective stringToConnective(string aString);
-
+    
+    /* Uncomment once implemented
+     
 	//Convert the String to a Connective
 	static string connectiveToString(Connective aConnective);
 
@@ -34,6 +34,5 @@ public:
     // Takes a string and convert it to a iEngine method
     //static Method stringToMethod(string aString);
      
-    
+    */
 };
-

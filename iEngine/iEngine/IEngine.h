@@ -19,6 +19,7 @@ class IEngine
 {
 private:
     vector<Predicate> fPredicates;
+    bool evaluateUsingTruthTable();
 public:
     IEngine(vector<Predicate>);  // defautl Constructors
     ~IEngine();

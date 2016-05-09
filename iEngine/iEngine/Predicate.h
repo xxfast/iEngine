@@ -21,8 +21,9 @@ enum Connective {NOT,IMPLY,AND,OR,EQU};
 class Predicate
 {
 private:
-    vector<string> fVariables;
-    vector<Connective> fConnectives;
+    string flVal;
+    string fRVal;
+    Connective fConnective;
     vector<string> split(string str, char delimiter);
 public:
     Predicate();
