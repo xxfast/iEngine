@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D31364881CE0891C00EA8E5D /* IEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D31364871CE0891C00EA8E5D /* IEngine.cpp */; };
 		D353C9141CD99631004963A1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D353C9131CD99631004963A1 /* main.cpp */; };
 		D353C91D1CD99F78004963A1 /* Predicate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D353C91C1CD99F78004963A1 /* Predicate.cpp */; };
 		D353C9231CD9A9A1004963A1 /* Utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D353C9211CD9A9A1004963A1 /* Utilities.cpp */; };
@@ -25,6 +26,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D31364861CE0891C00EA8E5D /* IEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEngine.h; sourceTree = "<group>"; };
+		D31364871CE0891C00EA8E5D /* IEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IEngine.cpp; sourceTree = "<group>"; };
 		D353C9101CD99631004963A1 /* iEngine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = iEngine; sourceTree = BUILT_PRODUCTS_DIR; };
 		D353C9131CD99631004963A1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D353C91B1CD99D0E004963A1 /* Predicate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Predicate.h; sourceTree = "<group>"; };
@@ -64,6 +67,8 @@
 		D353C9121CD99631004963A1 /* iEngine */ = {
 			isa = PBXGroup;
 			children = (
+				D31364861CE0891C00EA8E5D /* IEngine.h */,
+				D31364871CE0891C00EA8E5D /* IEngine.cpp */,
 				D353C9271CD9BB97004963A1 /* test.txt */,
 				D353C9211CD9A9A1004963A1 /* Utilities.cpp */,
 				D353C9221CD9A9A1004963A1 /* Utilities.h */,
@@ -133,6 +138,7 @@
 				D353C9141CD99631004963A1 /* main.cpp in Sources */,
 				D353C91D1CD99F78004963A1 /* Predicate.cpp in Sources */,
 				D353C9231CD9A9A1004963A1 /* Utilities.cpp in Sources */,
+				D31364881CE0891C00EA8E5D /* IEngine.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

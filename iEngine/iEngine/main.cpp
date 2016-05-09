@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include "Predicate.h"
+#include "IEngine.h"
+#include "Utilities.h"
 
 using namespace std;
 
@@ -27,16 +29,24 @@ int main(int argc, char* argv[])
 		return 2;
 	}
 
-	if (lInput.good())
+	if (!lInput.good())
 	{
-		cerr << "Opened input file " << argv[1] << endl;
-		// program successfull
-		return 0;
+		cerr << "Couldn't open input file " << argv[1] << endl;
+		// program failed (input)
+		return 2;
 	}
-
-	lInput.close();
-
-	cout << "test" << endl;
+    
+	cout << "iEngine Driver Program" << endl;
+    
 	Predicate myPredicate("P=>E;");
+    vector<Predicate>* myPredicates = new vector<Predicate>();//Utilities::generatePredicates(lInput);
+    
+    // Instatiate iEngine on the Heap
+    IEngine* testEngine = new IEngine(*myPredicates);
+    cout << testEngine->evaluate(Method::TT);
+    
+    
+    //Exit the program
+    lInput.close();
 	return 0;
 }
