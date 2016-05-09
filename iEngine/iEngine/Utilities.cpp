@@ -5,22 +5,42 @@ Utilities::Utilities()
 {
 }
 
+
+
 Utilities::~Utilities()
 {
 }
 
-//Helper function
 
-vector<string> Utilities::splice(string str, char delimiter)
+//Split the string based on the delimiter and store it into a array of string
+vector<string> Utilities::splice(string aString, char aDelimiter)
 {
-    vector<string> internal;
-    stringstream ss(str);
-    string tok;
-    while(getline(ss, tok, delimiter)) internal.push_back(tok);
-    return internal;
+	vector<string> result;
+	stringstream lStringStream(aString);
+	string lToken;
+	while (getline(lStringStream, lToken, aDelimiter)) result.push_back(lToken);
+	return result;
 }
 
-Connective Utilities::stringToConnective(string aString)
+static Connective stringToConnective(string aString)
 {
-    return Connective::IMPLY;
+	Connective result;
+	if (aString == "=>") result = IMPLY;
+	else if (aString == "<=>") result = EQU;
+	else if (aString == "~") result = NOT;
+	else if (aString == "^") result = AND;
+	else result = OR;
+
+	return result;
+}
+static string connectiveToString(Connective aConnective)
+{
+	string result;
+
+	if (aConnective == IMPLY)result = "=>";
+	else if (aConnective == EQU)result = "<=>";
+	else if (aConnective == NOT)result = "~";
+	else if (aConnective == AND)result = "^";
+	else result = "v";
+	return result;
 }
