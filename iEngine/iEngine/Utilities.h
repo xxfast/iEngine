@@ -19,6 +19,8 @@ public:
 
 	//Convert the String to a Connective
 	static string connectinveToString(Connective aConnective);
-
+    
+    //Generate vector of predicates from a string line
+    static vector<Predicate> generatePredicates(ifstream& aInput);
 };
 
