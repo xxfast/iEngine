@@ -16,13 +16,15 @@
 
 using namespace std;
 
-enum Connective {NOT,IMPLY,AND,OR,EQU};
+typedef string Variable;
+
+enum Connective {NILL,NOT,IMPLY,AND,OR,EQU};
 
 class Predicate
 {
 private:
-    string flVal;
-    string fRVal;
+    Variable fLVal;
+    Variable fRVal;
     Connective fConnective;
     vector<string> split(string str, char delimiter);
 public:
@@ -32,6 +34,12 @@ public:
     // Member Functions
     bool evaluvate(map<string,int> aKeyValues);
     bool simplify();
+    
+    //getters and setters
+    bool isAtomic();
+    vector<Variable> getVariables();
+    Variable getLeft();
+    Variable getRight();
     
     //friend operators
     friend ostream& operator<<(ostream& aOStream ,Predicate& aPredicate);

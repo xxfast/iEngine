@@ -19,11 +19,12 @@ class IEngine
 {
 private:
     vector<Predicate> fPredicates;
+    vector<Variable> fVariables;
     bool evaluateUsingTruthTable();
+    bool alreadyMapped(Variable aVariable);
 public:
-    IEngine(vector<Predicate>);  // defautl Constructors
+    IEngine(vector<Predicate> aPredicates);  // defautl Constructors
     ~IEngine();
     
     bool evaluate(Method aMethod);
 };
-
