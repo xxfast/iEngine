@@ -8,6 +8,7 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
+    
 	if (argc < 1)
 	{
 		cerr << "Arguments missing" << endl;
