@@ -32,7 +32,7 @@ bool IEngine::alreadyMapped(Variable aVariable)
 bool IEngine::evaluateUsingTruthTable()
 {
     //Translate the predicates into a truth table
-    
+    //TruthTable* truth = new TruthTable(fPredicates);
     //See if the
     return false;
 }
