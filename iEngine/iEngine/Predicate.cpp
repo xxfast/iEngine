@@ -32,7 +32,7 @@ Predicate::Predicate(string aInputString)
     
 }
 
-bool Predicate::isAtomic()
+bool Predicate::isLiteral()
 {
     return (fConnective==NILL) && (fRVal=="");
 }

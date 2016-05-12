@@ -23,25 +23,25 @@ enum Connective {NILL,NOT,IMPLY,AND,OR,EQU};
 class Predicate
 {
 private:
-    Variable fLVal;
-    Variable fRVal;
-    Connective fConnective;
-    vector<string> split(string str, char delimiter);
+    Variable fLVal; //left side variable
+    Variable fRVal; //right side variable
+    Connective fConnective; //operation between the value
 public:
+    // MARK: Constructors
     Predicate();
     Predicate(string aInputString); // Default Constructor
     
-    // Member Functions
-    bool evaluvate(map<string,int> aKeyValues);
-    bool simplify();
+    // MARK: Member Functions
     
-    //getters and setters
-    bool isAtomic();
+    // MARK: Setter and Getters
+    
+    bool isLiteral();
     vector<Variable> getVariables();
     Variable getLeft();
     Variable getRight();
     
-    //friend operators
+    // MARK: Friends
+    
     friend ostream& operator<<(ostream& aOStream ,Predicate& aPredicate);
 };
 

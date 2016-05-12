@@ -37,7 +37,7 @@ bool IEngine::evaluateUsingTruthTable()
     return false;
 }
 
-bool IEngine::evaluate(Method aMethod)
+bool IEngine::process(Method aMethod)
 {
     bool result;
     switch (aMethod)
