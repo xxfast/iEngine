@@ -14,12 +14,23 @@ using namespace std;
 
 void TestTruthTable()
 {
-    
+    bool result = (1==1);
+    cout << "\t- Testing TruthTable " << ((result)?"✔︎":"✘") << endl;
+}
+
+void TestPredicate()
+{
+    bool result = (1==1);
+    cout << "\t- Testing Predicate " << ((result)?"✔︎":"✘") << endl;
 }
 
 int main(int argc, const char * argv[])
 {
     cout << "Testing IEngine" <<endl;
+    
+    // MARK: TestSuite
+    
     TestTruthTable();
+    
     return 0;
 }
