@@ -20,6 +20,30 @@ IEngine::~IEngine()
 {
 }
 
+bool IEngine::evaluvatePredicate(Predicate aPredicate, map<Variable, bool> aKeyValues)
+{
+	//Evaluate the Given Predicate
+	bool result = NULL;
+	bool lLeft = aKeyValues[aPredicate.getLeft()];
+	bool lRight = aKeyValues[aPredicate.getRight()];
+	Connective lConnective = aPredicate.getConnective();
+
+	if (!aPredicate.isLiteral())
+	{
+		if (lConnective == AND)result = (lLeft && lRight);
+		else if (lConnective == OR)result = (lLeft || lRight);
+		else if (lConnective == EQU)result = (lLeft == lRight);
+		else if (lConnective == IMPLY)result = (!lLeft || lRight);
+	}
+	else
+	{
+		result = (lConnective == NOT)? !lRight: lLeft;
+	}
+
+	return result;
+}
+
+
 bool IEngine::alreadyMapped(Variable aVariable)
 {
     for(int i=0;i<fVariables.size();i++)
@@ -32,7 +56,7 @@ bool IEngine::alreadyMapped(Variable aVariable)
 bool IEngine::evaluateUsingTruthTable()
 {
     //Translate the predicates into a truth table
-    
+    //TruthTable* truth = new TruthTable(fPredicates);
     //See if the
     return false;
 }

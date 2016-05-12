@@ -1,7 +1,9 @@
-﻿  Utilities.cpp
-d:\swinburne\semester3\introduction_to_ai\myfolder\assignment2\teamproject\iengine\iengine\iengine\utilities.cpp(53): warning C4129: '/': unrecognized character escape sequence
+﻿  Predicate.cpp
+  IEngine.cpp
+d:\swinburne\semester3\introduction_to_ai\myfolder\assignment2\teamproject\iengine\iengine\iengine\iengine.cpp(12): warning C4018: '<': signed/unsigned mismatch
+d:\swinburne\semester3\introduction_to_ai\myfolder\assignment2\teamproject\iengine\iengine\iengine\iengine.cpp(49): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
   Skipping... (no relevant changes detected)
   main.cpp
-  Predicate.cpp
+  Utilities.cpp
   iEngine.vcxproj -> D:\Swinburne\Semester3\Introduction_to_AI\MyFolder\Assignment2\TeamProject\iEngine\iEngine\Debug\iEngine.exe

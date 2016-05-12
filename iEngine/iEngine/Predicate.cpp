@@ -55,6 +55,11 @@ Variable Predicate::getRight()
     return fRVal;
 }
 
+Connective Predicate::getConnective()
+{
+	return fConnective;
+}
+
 ostream& operator<<(ostream& aOStream ,Predicate& aPredicate)
 {
     return aOStream;
