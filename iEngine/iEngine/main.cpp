@@ -40,10 +40,10 @@ int main(int argc, char* argv[])
     
 	Predicate myPredicate("P=>E");
     vector<Predicate>* myPredicates = new vector<Predicate>();//Utilities::generatePredicates(lInput);
-    
+    myPredicates->push_back(myPredicate);
     // Instatiate iEngine on the Heap
     IEngine* testEngine = new IEngine(*myPredicates);
-    cout << testEngine->evaluate(Method::TT) <<endl;
+    cout << testEngine->process(Method::TT) <<endl;
     
     
     //Exit the program

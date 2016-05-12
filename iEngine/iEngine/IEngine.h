@@ -19,11 +19,18 @@ class IEngine
 {
 private:
     vector<Predicate> fPredicates;
+    vector<Variable> fVariables;
+    
+    // MARK: Private Member function
     bool evaluateUsingTruthTable();
+    bool alreadyMapped(Variable aVariable);
+    bool evaluvatePredicate(Predicate p,map<Variable,bool> keyValues);
 public:
-    IEngine(vector<Predicate>);  // defautl Constructors
+    
+    // MARK: Constructors
+    IEngine(vector<Predicate> aPredicates);
     ~IEngine();
     
-    bool evaluate(Method aMethod);
+    // MARK: Member function
+    bool process(Method aMethod);
 };
-
