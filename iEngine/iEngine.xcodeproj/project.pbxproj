@@ -11,6 +11,7 @@
 		D353C9141CD99631004963A1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D353C9131CD99631004963A1 /* main.cpp */; };
 		D353C91D1CD99F78004963A1 /* Predicate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D353C91C1CD99F78004963A1 /* Predicate.cpp */; };
 		D353C9231CD9A9A1004963A1 /* Utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D353C9211CD9A9A1004963A1 /* Utilities.cpp */; };
+		D382DFAD1CE4721D00BD79C9 /* TruthTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D382DFAB1CE4721D00BD79C9 /* TruthTable.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,8 @@
 		D353C9211CD9A9A1004963A1 /* Utilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utilities.cpp; sourceTree = "<group>"; };
 		D353C9221CD9A9A1004963A1 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		D353C9271CD9BB97004963A1 /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
+		D382DFAB1CE4721D00BD79C9 /* TruthTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TruthTable.cpp; sourceTree = "<group>"; };
+		D382DFAC1CE4721D00BD79C9 /* TruthTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TruthTable.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +78,8 @@
 				D353C9131CD99631004963A1 /* main.cpp */,
 				D353C91B1CD99D0E004963A1 /* Predicate.h */,
 				D353C91C1CD99F78004963A1 /* Predicate.cpp */,
+				D382DFAB1CE4721D00BD79C9 /* TruthTable.cpp */,
+				D382DFAC1CE4721D00BD79C9 /* TruthTable.h */,
 			);
 			path = iEngine;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D353C9141CD99631004963A1 /* main.cpp in Sources */,
+				D382DFAD1CE4721D00BD79C9 /* TruthTable.cpp in Sources */,
 				D353C91D1CD99F78004963A1 /* Predicate.cpp in Sources */,
 				D353C9231CD9A9A1004963A1 /* Utilities.cpp in Sources */,
 				D31364881CE0891C00EA8E5D /* IEngine.cpp in Sources */,
