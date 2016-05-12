@@ -16,24 +16,32 @@
 
 using namespace std;
 
-enum Connective {NOT,IMPLY,AND,OR,EQU};
+typedef string Variable;
+
+enum Connective {NILL,NOT,IMPLY,AND,OR,EQU};
 
 class Predicate
 {
 private:
-    string flVal;
-    string fRVal;
-    Connective fConnective;
-    vector<string> split(string str, char delimiter);
+    Variable fLVal; //left side variable
+    Variable fRVal; //right side variable
+    Connective fConnective; //operation between the value
 public:
+    // MARK: Constructors
     Predicate();
     Predicate(string aInputString); // Default Constructor
     
-    // Member Functions
-    bool evaluvate(map<string,int> aKeyValues);
-    bool simplify();
+    // MARK: Member Functions
     
-    //friend operators
+    // MARK: Setter and Getters
+    
+    bool isLiteral();
+    vector<Variable> getVariables();
+    Variable getLeft();
+    Variable getRight();
+    
+    // MARK: Friends
+    
     friend ostream& operator<<(ostream& aOStream ,Predicate& aPredicate);
 };
 
