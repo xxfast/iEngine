@@ -78,8 +78,8 @@
 				D353C9131CD99631004963A1 /* main.cpp */,
 				D353C91B1CD99D0E004963A1 /* Predicate.h */,
 				D353C91C1CD99F78004963A1 /* Predicate.cpp */,
-				D382DFAB1CE4721D00BD79C9 /* TruthTable.cpp */,
 				D382DFAC1CE4721D00BD79C9 /* TruthTable.h */,
+				D382DFAB1CE4721D00BD79C9 /* TruthTable.cpp */,
 			);
 			path = iEngine;
 			sourceTree = "<group>";

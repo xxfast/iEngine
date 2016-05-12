@@ -10,11 +10,19 @@
 #define TruthTable_hpp
 
 #include <stdio.h>
+#include <math.h>
+#include "Predicate.h"
 
 class TruthTable {
     
+private:
+    // MARK: Members
+    vector<vector<bool>> fValues;
 public:
+    // MARK: Constructors
+    TruthTable(vector<Predicate> aListOfPredicates, vector<Variable> aListOfVariables);
     
+    // MARK: Member functions
 };
 
 #endif /* TruthTable_hpp */
