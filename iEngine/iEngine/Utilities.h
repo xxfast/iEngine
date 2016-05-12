@@ -29,7 +29,7 @@ public:
     // Takes an input file stream as the input
     // and and generates a vector of predicates from each the input
     // and return the vector of predicates
-    //static vector<Predicate> generatePredicates(ifstream& aInput);
+    static vector<Predicate> generatePredicates(ifstream& aInput);
     
     // Takes a string and convert it to a iEngine method
     static Method stringToMethod(string aString);
