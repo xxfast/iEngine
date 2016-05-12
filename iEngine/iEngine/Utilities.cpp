@@ -1,3 +1,11 @@
+//
+//  Utilities.cpp
+//  iEngine
+//
+//  Created by Ian Adrian Wisata Isuru Kusumal Rajapakse on 5/4/16.
+//  Copyright © 2016 Isuru Kusumal Rajapakse. All rights reserved.
+//
+
 #include "Utilities.h"
 
 
@@ -22,7 +30,8 @@ vector<string> Utilities::splice(string aString, char aDelimiter)
 	return result;
 }
 
-static Connective stringToConnective(string aString)
+
+Connective Utilities::stringToConnective(string aString)
 {
 	Connective result;
 	if (aString == "=>") result = IMPLY;
@@ -33,7 +42,7 @@ static Connective stringToConnective(string aString)
 
 	return result;
 }
-static string connectiveToString(Connective aConnective)
+string Utilities::connectiveToString(Connective aConnective)
 {
 	string result;
 
@@ -41,6 +50,15 @@ static string connectiveToString(Connective aConnective)
 	else if (aConnective == EQU)result = "<=>";
 	else if (aConnective == NOT)result = "~";
 	else if (aConnective == AND)result = "^";
-	else result = "v";
+	else if (aConnective == OR)result = "\/";
+	return result;
+}
+
+Method Utilities::stringToMethod(string aString)
+{
+	Method result;
+	if (aString == "FC")result = FC;
+	else if (aString == "BC")result = BC;
+	else if (aString == "TT")result = TT;
 	return result;
 }

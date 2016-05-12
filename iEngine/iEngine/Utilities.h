@@ -20,7 +20,7 @@ public:
 	//Convert the String to a Connective
 	static Connective stringToConnective(string aString);
     
-    /* Uncomment once implemented
+   
      
 	//Convert the String to a Connective
 	static string connectiveToString(Connective aConnective);
@@ -32,7 +32,7 @@ public:
     //static vector<Predicate> generatePredicates(ifstream& aInput);
     
     // Takes a string and convert it to a iEngine method
-    //static Method stringToMethod(string aString);
+    static Method stringToMethod(string aString);
      
-    */
+    
 };
