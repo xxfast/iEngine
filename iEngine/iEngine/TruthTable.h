@@ -10,19 +10,29 @@
 #define TruthTable_hpp
 
 #include <stdio.h>
+#include <iostream>
 #include <math.h>
+#include <iomanip>
 #include "Predicate.h"
+
+using namespace std;
 
 class TruthTable {
     
 private:
     // MARK: Members
     vector<vector<bool>> fValues;
+    int fNColumns;
+    int fNRows;
 public:
     // MARK: Constructors
     TruthTable(vector<Predicate> aListOfPredicates, vector<Variable> aListOfVariables);
     
     // MARK: Member functions
+    vector<bool>& operator[](int r);
+    
+    // MARK: Friends
+    friend ofstream& operator<<(ofstream& aOutput, TruthTable& aTruthTable);
 };
 
 #endif /* TruthTable_hpp */

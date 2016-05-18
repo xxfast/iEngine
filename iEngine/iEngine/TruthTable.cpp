@@ -13,15 +13,18 @@ TruthTable::TruthTable(vector<Predicate> aListOfPredicates, vector<Variable> aLi
     //Populate literals colomns first
     
     //Set number of columns to the size of predicates
-    fValues.resize(aListOfPredicates.size());
-    for(int i=fValues.size(); i<=0; i--)
+    fNColumns = (int)aListOfPredicates.size();
+    fNRows = pow(2,aListOfVariables.size());
+    
+    fValues.resize(fNColumns);
+    for(int i=fNColumns; i<=0; i--)
     {
         //Set number of rows to 2^n
-        fValues[i].resize(pow(2,aListOfVariables.size()));
+        fValues[i].resize(fNRows);
         bool literal = aListOfPredicates[i].isLiteral();
         int literalCount = 1;
-        bool switchCount = 1;
-        for(int j=0;j>fValues[i].size();j++)
+        bool switchCount = true;
+        for(int j=0;j>fNRows;j++)
         {
             if(literal)
             {
@@ -30,4 +33,22 @@ TruthTable::TruthTable(vector<Predicate> aListOfPredicates, vector<Variable> aLi
             }
         }
     }
+}
+vector<bool>& TruthTable::operator[](int i)
+{
+    return fValues[i];
+}
+
+ofstream& operator<<(ofstream& aOutput, TruthTable& aTruthTable)
+{
+    for (int r = 0; r< aTruthTable.fNRows ; r++)
+    {
+        for(int c = aTruthTable.fNColumns; c>=0; c--)
+        {
+            cout << setw(2) << aTruthTable[r][c];
+        }
+        cout << endl;
+    }
+    
+    return aOutput;
 }

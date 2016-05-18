@@ -24,7 +24,6 @@ private:
     // MARK: Private Member function
     bool evaluateUsingTruthTable();
     bool alreadyMapped(Variable aVariable);
-    bool evaluvatePredicate(Predicate aPredicate,map<Variable,bool> aKeyValues);
 public:
     
     // MARK: Constructors
@@ -33,4 +32,5 @@ public:
     
     // MARK: Member function
     bool process(Method aMethod);
+    bool evaluvatePredicate(Predicate aPredicate,map<Variable,bool> aKeyValues);
 };
