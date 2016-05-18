@@ -26,7 +26,7 @@ void TestPredicate()
     cout << "\t- Testing Predicate " << ((result)?"✔︎":"✘") << endl;
 }
 
-void TestEvaluvatePredicate()
+void TestEvaluvatePredicateWithImplication()
 {
     Predicate myPredicate ("A=>B");
     map<Variable,bool> myKeyValues;
@@ -39,6 +39,12 @@ void TestEvaluvatePredicate()
     
     bool result = ( 0 == myEngine.evaluvatePredicate(myPredicate, myKeyValues) );
     cout << "\t- Testing Evaluvate Predicate " << ((result)?"✔︎":"✘") << endl;
+}
+
+void TestEvaluvatePredicate()
+{
+    TestEvaluvatePredicateWithImplication();
+    TestEvaluvatePredicateWithImplication();
 }
 
 int main(int argc, const char * argv[])
