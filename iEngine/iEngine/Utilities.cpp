@@ -3,11 +3,12 @@
 //  iEngine
 //
 //  Created by Ian Adrian Wisata Isuru Kusumal Rajapakse on 5/4/16.
-//  Copyright © 2016 Isuru Kusumal Rajapakse. All rights reserved.
+//  Copyright ï¿½ 2016 Isuru Kusumal Rajapakse. All rights reserved.
 //
 
 #include "Utilities.h"
 #include <fstream>
+#include <stdexcept>
 
 
 Utilities::Utilities()
@@ -70,18 +71,21 @@ vector<Predicate>  Utilities::generatePredicates(ifstream& aInput)
 	vector<string> lFirstLine;
 	vector<string> lSecondLine;
 	vector<Predicate> result;
-	while (aInput.good())
+	if (!aInput.good())
 	{
-		for (int i = 0; i < 4; i++)
-		{
-			getline(aInput, lFirstLine[i], '\n');
-		}
-		lSecondLine = splice(lFirstLine[1], ';');
-		
-		for (int i = 0; i < lSecondLine.size(); i++)
-		{
-			result[i] = Predicate(lSecondLine[i]);
-		}
-		return result;
-	}
+        throw domain_error("Bad Input");
+    }
+    
+    for (int i = 0; i < 4; i++)
+    {
+        getline(aInput, lFirstLine[i], '\n');
+    }
+    lSecondLine = splice(lFirstLine[1], ';');
+    
+    for (int i = 0; i < lSecondLine.size(); i++)
+    {
+        result[i] = Predicate(lSecondLine[i]);
+    }
+    
+    return result;
 }
