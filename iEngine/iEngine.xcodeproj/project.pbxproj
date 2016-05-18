@@ -12,7 +12,15 @@
 		D353C91D1CD99F78004963A1 /* Predicate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D353C91C1CD99F78004963A1 /* Predicate.cpp */; };
 		D353C9231CD9A9A1004963A1 /* Utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D353C9211CD9A9A1004963A1 /* Utilities.cpp */; };
 		D382DFAD1CE4721D00BD79C9 /* TruthTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D382DFAB1CE4721D00BD79C9 /* TruthTable.cpp */; };
-		D382DFC91CE499A800BD79C9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D382DFC81CE499A800BD79C9 /* main.cpp */; };
+		D3A636FE1CEC8215001B7824 /* IEngine.h in Sources */ = {isa = PBXBuildFile; fileRef = D31364861CE0891C00EA8E5D /* IEngine.h */; };
+		D3A636FF1CEC8215001B7824 /* IEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D31364871CE0891C00EA8E5D /* IEngine.cpp */; };
+		D3A637001CEC8215001B7824 /* Utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D353C9211CD9A9A1004963A1 /* Utilities.cpp */; };
+		D3A637011CEC8215001B7824 /* Utilities.h in Sources */ = {isa = PBXBuildFile; fileRef = D353C9221CD9A9A1004963A1 /* Utilities.h */; };
+		D3A637021CEC8215001B7824 /* Predicate.h in Sources */ = {isa = PBXBuildFile; fileRef = D353C91B1CD99D0E004963A1 /* Predicate.h */; };
+		D3A637031CEC8215001B7824 /* Predicate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D353C91C1CD99F78004963A1 /* Predicate.cpp */; };
+		D3A637041CEC8215001B7824 /* TruthTable.h in Sources */ = {isa = PBXBuildFile; fileRef = D382DFAC1CE4721D00BD79C9 /* TruthTable.h */; };
+		D3A637051CEC8215001B7824 /* TruthTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D382DFAB1CE4721D00BD79C9 /* TruthTable.cpp */; };
+		D3A637061CEC823A001B7824 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D382DFC81CE499A800BD79C9 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -202,7 +210,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D382DFC91CE499A800BD79C9 /* main.cpp in Sources */,
+				D3A637061CEC823A001B7824 /* main.cpp in Sources */,
+				D3A636FE1CEC8215001B7824 /* IEngine.h in Sources */,
+				D3A636FF1CEC8215001B7824 /* IEngine.cpp in Sources */,
+				D3A637001CEC8215001B7824 /* Utilities.cpp in Sources */,
+				D3A637011CEC8215001B7824 /* Utilities.h in Sources */,
+				D3A637021CEC8215001B7824 /* Predicate.h in Sources */,
+				D3A637031CEC8215001B7824 /* Predicate.cpp in Sources */,
+				D3A637041CEC8215001B7824 /* TruthTable.h in Sources */,
+				D3A637051CEC8215001B7824 /* TruthTable.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +380,7 @@
 				D382DFCC1CE499A800BD79C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
