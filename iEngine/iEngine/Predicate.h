@@ -39,6 +39,7 @@ public:
     vector<Variable> getVariables();
     Variable getLeft();
     Variable getRight();
+	Connective getConnective();
     
     // MARK: Friends
     
