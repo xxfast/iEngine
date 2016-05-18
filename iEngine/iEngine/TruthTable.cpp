@@ -22,7 +22,6 @@ TruthTable::TruthTable(vector<Predicate> aListOfPredicates, vector<Variable> aLi
         //Set number of rows to 2^n
         fValues[i].resize(fNRows);
         bool literal = aListOfPredicates[i].isLiteral();
-        int literalCount = 1;
         bool switchCount = true;
         for(int j=0;j>fNRows;j++)
         {
