@@ -20,6 +20,7 @@
 		D3A637031CEC8215001B7824 /* Predicate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D353C91C1CD99F78004963A1 /* Predicate.cpp */; };
 		D3A637041CEC8215001B7824 /* TruthTable.h in Sources */ = {isa = PBXBuildFile; fileRef = D382DFAC1CE4721D00BD79C9 /* TruthTable.h */; };
 		D3A637061CEC823A001B7824 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D382DFC81CE499A800BD79C9 /* main.cpp */; };
+		D3A6370F1CEC9D51001B7824 /* TruthTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D382DFAB1CE4721D00BD79C9 /* TruthTable.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -218,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3A6370F1CEC9D51001B7824 /* TruthTable.cpp in Sources */,
 				D3A637061CEC823A001B7824 /* main.cpp in Sources */,
 				D3A636FE1CEC8215001B7824 /* IEngine.h in Sources */,
 				D3A636FF1CEC8215001B7824 /* IEngine.cpp in Sources */,
