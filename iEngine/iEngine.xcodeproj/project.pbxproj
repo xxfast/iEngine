@@ -19,8 +19,8 @@
 		D3A637021CEC8215001B7824 /* Predicate.h in Sources */ = {isa = PBXBuildFile; fileRef = D353C91B1CD99D0E004963A1 /* Predicate.h */; };
 		D3A637031CEC8215001B7824 /* Predicate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D353C91C1CD99F78004963A1 /* Predicate.cpp */; };
 		D3A637041CEC8215001B7824 /* TruthTable.h in Sources */ = {isa = PBXBuildFile; fileRef = D382DFAC1CE4721D00BD79C9 /* TruthTable.h */; };
-		D3A637051CEC8215001B7824 /* TruthTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D382DFAB1CE4721D00BD79C9 /* TruthTable.cpp */; };
 		D3A637061CEC823A001B7824 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D382DFC81CE499A800BD79C9 /* main.cpp */; };
+		D3A6370F1CEC9D51001B7824 /* TruthTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D382DFAB1CE4721D00BD79C9 /* TruthTable.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,13 +33,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
-		D382DFC41CE499A800BD79C9 /* CopyFiles */ = {
+		D382DFC41CE499A800BD79C9 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -58,6 +59,10 @@
 		D382DFAC1CE4721D00BD79C9 /* TruthTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TruthTable.h; sourceTree = "<group>"; };
 		D382DFC61CE499A800BD79C9 /* IEngineTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = IEngineTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D382DFC81CE499A800BD79C9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		D3A637071CEC90DE001B7824 /* TestUtilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestUtilities.cpp; sourceTree = "<group>"; };
+		D3A637091CEC91D7001B7824 /* TestIEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestIEngine.cpp; sourceTree = "<group>"; };
+		D3A6370B1CEC9202001B7824 /* TestTruthTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestTruthTable.cpp; sourceTree = "<group>"; };
+		D3A6370D1CEC9228001B7824 /* TestPredicate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestPredicate.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +122,10 @@
 			isa = PBXGroup;
 			children = (
 				D382DFC81CE499A800BD79C9 /* main.cpp */,
+				D3A637071CEC90DE001B7824 /* TestUtilities.cpp */,
+				D3A637091CEC91D7001B7824 /* TestIEngine.cpp */,
+				D3A6370B1CEC9202001B7824 /* TestTruthTable.cpp */,
+				D3A6370D1CEC9228001B7824 /* TestPredicate.cpp */,
 			);
 			path = IEngineTest;
 			sourceTree = "<group>";
@@ -147,7 +156,7 @@
 			buildPhases = (
 				D382DFC21CE499A800BD79C9 /* Sources */,
 				D382DFC31CE499A800BD79C9 /* Frameworks */,
-				D382DFC41CE499A800BD79C9 /* CopyFiles */,
+				D382DFC41CE499A800BD79C9 /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -210,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3A6370F1CEC9D51001B7824 /* TruthTable.cpp in Sources */,
 				D3A637061CEC823A001B7824 /* main.cpp in Sources */,
 				D3A636FE1CEC8215001B7824 /* IEngine.h in Sources */,
 				D3A636FF1CEC8215001B7824 /* IEngine.cpp in Sources */,
@@ -218,7 +228,6 @@
 				D3A637021CEC8215001B7824 /* Predicate.h in Sources */,
 				D3A637031CEC8215001B7824 /* Predicate.cpp in Sources */,
 				D3A637041CEC8215001B7824 /* TruthTable.h in Sources */,
-				D3A637051CEC8215001B7824 /* TruthTable.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
