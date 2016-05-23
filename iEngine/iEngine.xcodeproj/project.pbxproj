@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D30D79B11CF370B300BEB836 /* CompoundPredicate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D30D79B01CF370B300BEB836 /* CompoundPredicate.cpp */; };
 		D31364881CE0891C00EA8E5D /* IEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D31364871CE0891C00EA8E5D /* IEngine.cpp */; };
 		D353C9141CD99631004963A1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D353C9131CD99631004963A1 /* main.cpp */; };
 		D353C91D1CD99F78004963A1 /* Predicate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D353C91C1CD99F78004963A1 /* Predicate.cpp */; };
@@ -46,6 +47,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D30D79AF1CF370B300BEB836 /* CompoundPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompoundPredicate.h; sourceTree = "<group>"; };
+		D30D79B01CF370B300BEB836 /* CompoundPredicate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompoundPredicate.cpp; sourceTree = "<group>"; };
 		D31364861CE0891C00EA8E5D /* IEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEngine.h; sourceTree = "<group>"; };
 		D31364871CE0891C00EA8E5D /* IEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IEngine.cpp; sourceTree = "<group>"; };
 		D353C9101CD99631004963A1 /* iEngine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = iEngine; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +107,8 @@
 		D353C9121CD99631004963A1 /* iEngine */ = {
 			isa = PBXGroup;
 			children = (
+				D30D79AF1CF370B300BEB836 /* CompoundPredicate.h */,
+				D30D79B01CF370B300BEB836 /* CompoundPredicate.cpp */,
 				D31364861CE0891C00EA8E5D /* IEngine.h */,
 				D31364871CE0891C00EA8E5D /* IEngine.cpp */,
 				D353C9271CD9BB97004963A1 /* test.txt */,
@@ -209,6 +214,7 @@
 			files = (
 				D353C9141CD99631004963A1 /* main.cpp in Sources */,
 				D382DFAD1CE4721D00BD79C9 /* TruthTable.cpp in Sources */,
+				D30D79B11CF370B300BEB836 /* CompoundPredicate.cpp in Sources */,
 				D353C91D1CD99F78004963A1 /* Predicate.cpp in Sources */,
 				D353C9231CD9A9A1004963A1 /* Utilities.cpp in Sources */,
 				D31364881CE0891C00EA8E5D /* IEngine.cpp in Sources */,

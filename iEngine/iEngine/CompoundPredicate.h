@@ -9,7 +9,7 @@ private:
 	Connective fConnective; //operation between the value
 public:
 	// MARK: Constructors
-	CompoundPredicate(Predicate aPredicateOne, Predicate aPredicateTwo, );
+	CompoundPredicate(Predicate aPredicateOne, Predicate aPredicateTwo);
 
 	~CompoundPredicate();
 
