@@ -65,10 +65,15 @@ bool IEngine::evaluateUsingTruthTable(Variable aAsked)
         {
             for(int j=0;j< truth->getRows(); j++)
             {
-                //truth->operator()(i, j) = true;
+                map<Variable,bool> lKeyValues;
+                lKeyValues[fPredicates[i].getLeft()]=truth->operator[](fPredicates[i].getLeft())[j];
+                lKeyValues[fPredicates[i].getRight()]=truth->operator[](fPredicates[i].getRight())[j];
+                bool result =evaluvatePredicate(fPredicates[i], lKeyValues);
+                truth->data()[i][j] = result;
             }
         }
     }
+    //cout << *truth;
     return truth->isInKnowledgeBase(aAsked);
 }
 

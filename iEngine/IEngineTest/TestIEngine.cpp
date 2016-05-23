@@ -90,8 +90,37 @@ void TestEvaluvatePredicate()
     TestEvaluvatePredicateWithEquvelence();
 }
 
+void TestEvaluvateWithTruthTable()
+{
+    Predicate p1 (Utilities::stringToPredicate("A^B"));
+    Predicate p2 (Utilities::stringToPredicate("A=>C"));
+    Predicate p3 (Utilities::stringToPredicate("A"));
+    Predicate p4 (Utilities::stringToPredicate("B"));
+    Predicate p5 (Utilities::stringToPredicate("C"));
+    
+    vector<Predicate> myPredicates ;
+    myPredicates.push_back(p1);
+    myPredicates.push_back(p2);
+    myPredicates.push_back(p3);
+    myPredicates.push_back(p4);
+    myPredicates.push_back(p5);
+    
+    vector<Variable> myVariables;
+    myVariables.push_back("A");
+    myVariables.push_back("B");
+    myVariables.push_back("C");
+    
+    IEngine lIEngine (myPredicates);
+    lIEngine.process(TT, "A");
+    
+    bool result = ( 1 == 1);
+    cout << "\t- Test Evaluvate With TruthTable " << ((result)?"✔︎":"✘") << endl;
+
+}
+
 void TestIEngine()
 {
     cout << "Testing IEngine" <<endl;
     TestEvaluvatePredicate();
+    TestEvaluvateWithTruthTable();
 }

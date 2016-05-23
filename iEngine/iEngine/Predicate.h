@@ -35,16 +35,18 @@ public:
     
     // MARK: Setter and Getters
     
-    bool isLiteral();
-    Variable getLiteral();
-    vector<Variable> getVariables();
-    Variable getLeft();
-    Variable getRight();
-	Connective getConnective();
+    bool isLiteral() const;
+    Variable getLiteral() const;
+    vector<Variable> getVariables() const;
+    Variable getLeft() const;
+    Variable getRight() const;
+	Connective getConnective() const;
     
     // MARK: Friends
     
     friend ostream& operator<<(ostream& aOStream ,Predicate& aPredicate);
+    friend bool operator==(const Predicate& aLHS ,const Predicate& aRHS);
+    friend bool operator<(const Predicate& aLHS ,const Predicate& aRHS);
 };
 
 #endif /* Predicate_h */

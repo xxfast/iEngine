@@ -85,6 +85,11 @@ string Utilities::connectiveToString(Connective aConnective)
 	return result;
 }
 
+string Utilities::predicateToString(Predicate& aPredicate)
+{
+    return aPredicate.getLeft()+connectiveToString(aPredicate.getConnective())+aPredicate.getRight();
+}
+
 Method Utilities::stringToMethod(string aString)
 {
 	Method result;
@@ -93,7 +98,6 @@ Method Utilities::stringToMethod(string aString)
 	else if (aString == "TT")result = TT;
 	return result;
 }
-
 
 vector<Predicate>  Utilities::generatePredicates(ifstream& aInput)
 {

@@ -25,6 +25,7 @@ public:
      
 	//Convert the String to a Connective
 	static string connectiveToString(Connective aConnective);
+    
 
 	//Uncomment once implemented
     // Takes an input file stream as the input
@@ -32,8 +33,9 @@ public:
     // and return the vector of predicates
     static vector<Predicate> generatePredicates(ifstream& aInput);
     
-    // Takes a string and convert it to a iEngine method
+    // Takes a string and convert it to others
     static Method stringToMethod(string aString);
+    static string predicateToString(Predicate& aPredicate);
      
     
 };
