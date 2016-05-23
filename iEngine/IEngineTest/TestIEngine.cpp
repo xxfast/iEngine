@@ -13,12 +13,13 @@
 
 #include "Predicate.h"
 #include "IEngine.h"
+#include "Utilities.h"
 
 using namespace std;
 
 void TestEvaluvatePredicateWithImplication()
 {
-    Predicate myPredicate ("A=>B");
+    Predicate myPredicate (Utilities::stringToPredicate("A=>B"));
     map<Variable,bool> myKeyValues;
     myKeyValues["A"]=1;
     myKeyValues["B"]=0;
@@ -33,7 +34,7 @@ void TestEvaluvatePredicateWithImplication()
 
 void TestEvaluvatePredicateWithUnion()
 {
-    Predicate myPredicate ("A&B");
+    Predicate myPredicate (Utilities::stringToPredicate("A^B"));
     
     vector<Predicate> myPredicates;
     myPredicates.push_back(myPredicate);
@@ -48,7 +49,7 @@ void TestEvaluvatePredicateWithUnion()
 
 void TestEvaluvatePredicateWithIntersect()
 {
-    Predicate myPredicate ("A\/B");
+    Predicate myPredicate (Utilities::stringToPredicate("A\/B"));
     
     vector<Predicate> myPredicates;
     myPredicates.push_back(myPredicate);
@@ -63,7 +64,7 @@ void TestEvaluvatePredicateWithIntersect()
 
 void TestEvaluvatePredicateWithNegation()
 {
-    Predicate myPredicate ("~B");
+    Predicate myPredicate (Utilities::stringToPredicate("~B"));
     
     vector<Predicate> myPredicates;
     myPredicates.push_back(myPredicate);

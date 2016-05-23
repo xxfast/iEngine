@@ -8,6 +8,7 @@
 #include <iostream>
 
 #include "TruthTable.h"
+#include "Utilities.h"
 
 using namespace std;
 
@@ -15,11 +16,11 @@ void TestTruthTable()
 {
     cout << "Testing TruthTable" <<endl;
     
-    Predicate p1 ("A&B");
-    Predicate p2 ("B&C");
-    Predicate p3 ("A");
-    Predicate p4 ("B");
-    Predicate p5 ("C");
+    Predicate p1 (Utilities::stringToPredicate("A&B"));
+    Predicate p2 (Utilities::stringToPredicate("B&C"));
+    Predicate p3 (Utilities::stringToPredicate("A"));
+    Predicate p4 (Utilities::stringToPredicate("B"));
+    Predicate p5 (Utilities::stringToPredicate("C"));
     
     vector<Predicate> myPredicates ;
     myPredicates.push_back(p1);

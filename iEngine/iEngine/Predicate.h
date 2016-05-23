@@ -29,7 +29,7 @@ private:
 public:
     // MARK: Constructors
     Predicate();
-    Predicate(string aInputString); // Default Constructor
+    Predicate(Variable aLeftVariable, Variable aRightVariable, Connective aConnective); // Default Constructor
     
     // MARK: Member Functions
     

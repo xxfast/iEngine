@@ -18,15 +18,12 @@ TruthTable::TruthTable(vector<Predicate>& aListOfPredicates, vector<Variable>& a
     
     int currentPredicate = (int)aListOfPredicates.size();
     
-    for (int r = 0; r < fNRows ; r++)
+    for(int i=(int)aListOfPredicates.size()-1;i>=0;i--)
     {
-        int i = 0;
-        bool lSwitch = 0;
-        for(int c = 0; c < fNColumns ; c++)
+        if(aListOfPredicates[i].isLiteral())
         {
-            bool literal = aListOfPredicates[--currentPredicate].isLiteral();
-           
-            if(literal)
+            bool lSwitch = 0;
+            for(int j=0;j< fNRows; j++)
             {
                 i++;
                 if ( i < pow(2,currentPredicate) )
@@ -34,19 +31,19 @@ TruthTable::TruthTable(vector<Predicate>& aListOfPredicates, vector<Variable>& a
                     lSwitch=!lSwitch;
                     i = 0;
                 }
-                fValues[r][c] = lSwitch;
-            }
-            else
-            {
-                //Evaluvate Predicate
-                fValues[r][c] = false;
+                fValues[j][i] = lSwitch;
             }
         }
-    }
+    }    
 }
 bool TruthTable::operator()(int r, int c)
 {
     return fValues[r][c];
+}
+
+bool TruthTable::isInKnowledgeBase(Variable aAsked)
+{
+    return true;
 }
 
 ostream& operator<<(ostream& aOutput, TruthTable& aTruthTable)

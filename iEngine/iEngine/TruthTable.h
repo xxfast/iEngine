@@ -30,6 +30,7 @@ public:
     
     // MARK: Member functions
     bool operator()(int r,int c);
+    bool isInKnowledgeBase(Variable aAsked);
     
     // MARK: Friends
     friend ostream& operator<<(ostream& aOutput, TruthTable& aTruthTable);
