@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <vector>
+#include <map>
 #include <string>
 
 #ifndef Predicate_h
@@ -15,17 +16,34 @@
 
 using namespace std;
 
-enum Connective {NOT,IMPLY,AND,OR,EQU};
+typedef string Variable;
+
+enum Connective {NILL,NOT,IMPLY,AND,OR,EQU};
 
 class Predicate
 {
 private:
-    vector<string> fVariables;
-    vector<Connective> fConnectives;
-    vector<string> split(string str, char delimiter);
+    Variable fLVal; //left side variable
+    Variable fRVal; //right side variable
+    Connective fConnective; //operation between the value
 public:
+    // MARK: Constructors
     Predicate();
     Predicate(string aInputString); // Default Constructor
+    
+    // MARK: Member Functions
+    
+    // MARK: Setter and Getters
+    
+    bool isLiteral();
+    vector<Variable> getVariables();
+    Variable getLeft();
+    Variable getRight();
+	Connective getConnective();
+    
+    // MARK: Friends
+    
+    friend ostream& operator<<(ostream& aOStream ,Predicate& aPredicate);
 };
 
 #endif /* Predicate_h */
