@@ -16,8 +16,8 @@ void TestTruthTable()
 {
     cout << "Testing TruthTable" <<endl;
     
-    Predicate p1 (Utilities::stringToPredicate("A&B"));
-    Predicate p2 (Utilities::stringToPredicate("B&C"));
+    Predicate p1 (Utilities::stringToPredicate("A^B"));
+    Predicate p2 (Utilities::stringToPredicate("B^C"));
     Predicate p3 (Utilities::stringToPredicate("A"));
     Predicate p4 (Utilities::stringToPredicate("B"));
     Predicate p5 (Utilities::stringToPredicate("C"));

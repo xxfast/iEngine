@@ -30,7 +30,12 @@ Predicate::Predicate(Variable aLeftVariable, Variable aRightVariable, Connective
 
 bool Predicate::isLiteral()
 {
-    return (fConnective==NILL) && (fRVal=="");
+    return ((fConnective==NILL) || (fConnective==NOT)) && ((fRVal=="")||(fLVal==""));
+}
+
+Variable Predicate::getLiteral()
+{
+    return (fLVal!="")?fLVal:fRVal;
 }
 
 vector<Variable> Predicate::getVariables()

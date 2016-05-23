@@ -36,6 +36,7 @@ public:
     // MARK: Setter and Getters
     
     bool isLiteral();
+    Variable getLiteral();
     vector<Variable> getVariables();
     Variable getLeft();
     Variable getRight();
