@@ -57,6 +57,18 @@ bool IEngine::evaluateUsingTruthTable(Variable aAsked)
 {
     //Translate the predicates into a truth table
     TruthTable* truth = new TruthTable(fPredicates, fVariables);
+    
+    
+    for(int i=0;i<(int)fPredicates.size();i++)
+    {
+        if(!fPredicates[i].isLiteral())
+        {
+            for(int j=0;j< truth->getRows(); j++)
+            {
+                //truth->operator()(i, j) = true;
+            }
+        }
+    }
     return truth->isInKnowledgeBase(aAsked);
 }
 
