@@ -8,44 +8,63 @@
 
 #include "TruthTable.h"
 
-TruthTable::TruthTable(vector<Predicate> aListOfPredicates, vector<Variable> aListOfVariables)
+TruthTable::TruthTable(vector<Predicate>& aListOfPredicates, vector<Variable>& aListOfVariables)
 {
     //Populate literals colomns first
-    
     //Set number of columns to the size of predicates
     fNColumns = (int)aListOfPredicates.size();
     fNRows = pow(2,aListOfVariables.size());
+    fValues.resize(fNColumns,vector<bool>(fNRows));
     
-    fValues.resize(fNColumns);
-    for(int i=fNColumns; i<=0; i--)
+    
+    for(int i=(int)aListOfPredicates.size()-1;i>=0;i--)
     {
-        //Set number of rows to 2^n
-        fValues[i].resize(fNRows);
-        bool literal = aListOfPredicates[i].isLiteral();
-        int literalCount = 1;
-        bool switchCount = true;
-        for(int j=0;j>fNRows;j++)
+        //Create values for literals first
+        if(aListOfPredicates[i].isLiteral())
         {
-            if(literal)
+            bool lSwitch = 0;
+            int flip = 0;
+            for(int j=0;j< fNRows; j++)
             {
-                switchCount = !(j<pow(2,i));
-                fValues[i][j] = switchCount ;
+                flip++;
+                int tPow = pow(2,(i-1))/2;
+                if ( flip > tPow )
+                {
+                    lSwitch=!lSwitch;
+                    flip= 1;
+                }
+                fValues[i][j] = lSwitch;
             }
         }
     }
 }
-vector<bool>& TruthTable::operator[](int i)
+bool TruthTable::operator()(int r, int c)
 {
-    return fValues[i];
+    return fValues[r][c];
 }
 
-ofstream& operator<<(ofstream& aOutput, TruthTable& aTruthTable)
+bool TruthTable::isInKnowledgeBase(Variable aAsked)
 {
-    for (int r = 0; r< aTruthTable.fNRows ; r++)
+    return true;
+}
+
+int TruthTable::getRows() const
+{
+    return fNRows;
+}
+
+int TruthTable::getCols() const
+{
+    return fNColumns;
+}
+
+ostream& operator<<(ostream& aOutput, TruthTable& aTruthTable)
+{
+    for (int r = 0; r < aTruthTable.fNRows ; r++)
     {
-        for(int c = aTruthTable.fNColumns; c>=0; c--)
+        for(int c = 0; c< aTruthTable.fNColumns ; c++)
         {
-            cout << setw(2) << aTruthTable[r][c];
+            cout << setw(2) << aTruthTable(c,r);
         }
         cout << endl;
     }

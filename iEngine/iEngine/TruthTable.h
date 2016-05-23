@@ -26,13 +26,18 @@ private:
     int fNRows;
 public:
     // MARK: Constructors
-    TruthTable(vector<Predicate> aListOfPredicates, vector<Variable> aListOfVariables);
+    TruthTable(vector<Predicate>& aListOfPredicates, vector<Variable>& aListOfVariables);
     
     // MARK: Member functions
-    vector<bool>& operator[](int r);
+    bool operator()(int r,int c);
+    bool isInKnowledgeBase(Variable aAsked);
+    
+    // MARK: Getters
+    int getRows() const;
+    int getCols() const;
     
     // MARK: Friends
-    friend ofstream& operator<<(ofstream& aOutput, TruthTable& aTruthTable);
+    friend ostream& operator<<(ostream& aOutput, TruthTable& aTruthTable);
 };
 
 #endif /* TruthTable_hpp */

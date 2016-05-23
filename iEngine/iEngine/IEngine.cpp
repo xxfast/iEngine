@@ -53,24 +53,35 @@ bool IEngine::alreadyMapped(Variable aVariable)
     return false;
 }
 
-bool IEngine::evaluateUsingTruthTable()
+bool IEngine::evaluateUsingTruthTable(Variable aAsked)
 {
     //Translate the predicates into a truth table
-    //TruthTable* truth = new TruthTable(fPredicates);
-    //See if the
-    return false;
+    TruthTable* truth = new TruthTable(fPredicates, fVariables);
+    
+    
+    for(int i=0;i<(int)fPredicates.size();i++)
+    {
+        if(!fPredicates[i].isLiteral())
+        {
+            for(int j=0;j< truth->getRows(); j++)
+            {
+                //truth->operator()(i, j) = true;
+            }
+        }
+    }
+    return truth->isInKnowledgeBase(aAsked);
 }
 
-bool IEngine::process(Method aMethod)
+bool IEngine::process(Method aMethod, Variable aAsked)
 {
     bool result;
     switch (aMethod)
     {
         case TT:
-            result = evaluateUsingTruthTable();
+            result = evaluateUsingTruthTable(aAsked);
             break;
         default:
-            result = evaluateUsingTruthTable(); //Defaults to TT
+            result =  evaluateUsingTruthTable(aAsked); //Defaults to TT
             break;
     }
     return result;
