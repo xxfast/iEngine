@@ -21,20 +21,21 @@ Predicate::Predicate()
     fConnective=NILL;
 }
 
-Predicate::Predicate(string aInputString)
+Predicate::Predicate(Variable aLeftVariable, Variable aRightVariable, Connective aConnective)
 {
-    fLVal = aInputString[0];
-    fRVal = aInputString[aInputString.length()-1];
-    if(aInputString.length()>=4)
-        fConnective = Utilities::stringToConnective(aInputString.substr(1,2));
-    else
-        fConnective = Utilities::stringToConnective(aInputString.substr(1,1));
-    
+    fLVal = aLeftVariable;
+    fRVal = aRightVariable;
+    fConnective = aConnective;
 }
 
 bool Predicate::isLiteral()
 {
-    return (fConnective==NILL) && (fRVal=="");
+    return ((fConnective==NILL) || (fConnective==NOT)) && ((fRVal=="")||(fLVal==""));
+}
+
+Variable Predicate::getLiteral()
+{
+    return (fLVal!="")?fLVal:fRVal;
 }
 
 vector<Variable> Predicate::getVariables()

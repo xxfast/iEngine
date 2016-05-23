@@ -20,7 +20,8 @@ public:
 	//Convert the String to a Connective
 	static Connective stringToConnective(string aString);
     
-   
+    //Convert the String to a Predicate
+    static Predicate stringToPredicate(string aString);
      
 	//Convert the String to a Connective
 	static string connectiveToString(Connective aConnective);

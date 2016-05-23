@@ -8,6 +8,7 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
+    
 	if (argc < 1)
 	{
 		cerr << "Arguments missing" << endl;
@@ -38,12 +39,12 @@ int main(int argc, char* argv[])
     
 	cout << "iEngine Driver Program" << endl;
     
-	Predicate myPredicate("P=>E");
-    vector<Predicate>* myPredicates = new vector<Predicate>();//Utilities::generatePredicates(lInput);
+    Predicate myPredicate(Utilities::stringToPredicate("P=>E"));
+    vector<Predicate>* myPredicates = new vector<Predicate>();
     myPredicates->push_back(myPredicate);
     // Instatiate iEngine on the Heap
     IEngine* testEngine = new IEngine(*myPredicates);
-    cout << testEngine->process(Method::TT) <<endl;
+    cout << testEngine->process(Method::TT, "P") <<endl;
     
     
     //Exit the program

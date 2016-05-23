@@ -29,13 +29,14 @@ private:
 public:
     // MARK: Constructors
     Predicate();
-    Predicate(string aInputString); // Default Constructor
+    Predicate(Variable aLeftVariable, Variable aRightVariable, Connective aConnective); // Default Constructor
     
     // MARK: Member Functions
     
     // MARK: Setter and Getters
     
     bool isLiteral();
+    Variable getLiteral();
     vector<Variable> getVariables();
     Variable getLeft();
     Variable getRight();
