@@ -34,7 +34,6 @@ public:
 	//Convert the String to a Connective
 	static string connectiveToString(Connective aConnective);
 
-	//Uncomment once implemented
     // Takes an input file stream as the input
     // and and generates a vector of predicates from each the input
     // and return the vector of predicates
@@ -43,5 +42,8 @@ public:
     // Takes a string and convert it to a iEngine method
     static Method stringToMethod(string aString);
      
+	// Takes a string and changes it to predicate
+	static Predicate stringToCompoundPredicate(string astring);
+
 	
 };

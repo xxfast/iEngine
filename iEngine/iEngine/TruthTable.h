@@ -32,6 +32,10 @@ public:
     bool operator()(int r,int c);
     bool isInKnowledgeBase(Variable aAsked);
     
+    // MARK: Getters
+    int getRows() const;
+    int getCols() const;
+    
     // MARK: Friends
     friend ostream& operator<<(ostream& aOutput, TruthTable& aTruthTable);
 };

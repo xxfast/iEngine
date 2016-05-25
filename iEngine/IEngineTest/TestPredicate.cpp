@@ -22,6 +22,7 @@ void TestPredicate()
     Predicate p4 (Utilities::stringToPredicate("A=>B"));
     Predicate p5 (Utilities::stringToPredicate("A<=>B"));
     Predicate p6 (Utilities::stringToPredicate("A"));
+    Predicate p7 (Utilities::stringToPredicate("~A"));
     
     bool result = (1==1);
     cout << "\t- Testing Predicate " << ((result)?"✔︎":"✘") << endl;
