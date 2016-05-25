@@ -14,16 +14,24 @@
 
 using namespace std;
 
+struct HornRecord 
+{
+	Predicate* fPredicate;
+	int fCount;
+};
+
 class ForwardChaining
 {
 private:
+	bool fStatus;
 	vector<Predicate> fAgenda;
 	vector<Predicate> fInferred;
-	map<Predicate, int> fHorn;
+	vector<Predicate> fPredicates;
+	vector<HornRecord> fHorns;
 
 public:
 	ForwardChaining();
 	ForwardChaining(vector<Predicate> aPredicates);
-	vector<Predicate> evaluate(map<Predicate, int> aHorn);
+	vector<Predicate> evaluate(map<Predicate, int> aHorn, Predicate aAsked);
 };
 

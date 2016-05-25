@@ -36,6 +36,9 @@
     <ClCompile Include="ForwardChaining.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BackwardChaining.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities.h">
@@ -54,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ForwardChaining.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BackwardChaining.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
