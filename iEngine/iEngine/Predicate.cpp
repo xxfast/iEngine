@@ -2,7 +2,7 @@
 //  Predicate.cpp
 //  iEngine
 //
-//  Created by Isuru Kusumal Rajapakse on 5/4/16.
+//  Created by Ian Adrian Wisata, Isuru Kusumal Rajapakse on 5/4/16.
 //  Copyright © 2016 Isuru Kusumal Rajapakse. All rights reserved.
 //
 
@@ -33,6 +33,11 @@ bool Predicate::isLiteral() const
     return ((fConnective==NILL) || (fConnective==NOT)) && ((fRVal=="")||(fLVal==""));
 }
 
+bool Predicate::isHorn() const
+{
+	return (!(isLiteral()) && (fConnective == IMPLY));
+}
+
 Variable Predicate::getLiteral() const
 {
     return (fLVal!="")?fLVal:fRVal;
@@ -60,6 +65,23 @@ Connective Predicate::getConnective() const
 {
 	return fConnective;
 }
+
+int Predicate::getPredicateCount(Predicate& aPredicate)
+{
+	int lResult = 0;
+	Predicate lPredicate = aPredicate;
+	if (!aPredicate.isLiteral())
+	{
+		lResult++;
+		while (lPredicate.getLeft().size() != 1)
+		{
+			lResult++;
+			lPredicate = Utilities::stringToPredicate(aPredicate.getLeft());
+		}
+	}
+	return lResult;
+}
+
 
 ostream& operator<<(ostream& aOStream ,Predicate& aPredicate)
 {
