@@ -44,7 +44,7 @@ public:
     vector<Variable> getVariables() const;
     Variable getLeft() const;
     Variable getRight() const;
-	Connective getConnective() const;
+	virtual Connective getConnective() const;
 
 	// Takes a string and gets the predicate count
 	int getPredicateCount(Predicate& aPredicate);
