@@ -10,6 +10,7 @@
 
 #include <vector>
 #include "Predicate.h"
+#include "CompoundPredicate.h"
 #include "TruthTable.h"
 
 using namespace std;
@@ -24,6 +25,8 @@ private:
     
     // MARK: Private Member function
     bool evaluateUsingTruthTable(Variable aAsked);
+    map<Variable,bool>& mapKeyValues(Predicate& aPredicate, TruthTable& truth, int indexToFetch, int indexToStore);
+    map<Variable,bool>& mapCompoundKeyValues(CompoundPredicate& aCompoundPredicate, TruthTable& truth, int indexToFetch, int indexToStore);
     bool alreadyMapped(Variable aVariable);
 public:
     
@@ -34,4 +37,5 @@ public:
     // MARK: Member function
     bool process(Method aMethod, Variable aAsked);
     bool evaluvatePredicate(Predicate aPredicate,map<Variable,bool> aKeyValues);
+    bool evaluvateCompundPredicate(CompoundPredicate aCounpundPredicate,map<Variable,bool> aKeyValues);
 };

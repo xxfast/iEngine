@@ -28,22 +28,22 @@ Predicate::Predicate(Variable aLeftVariable, Variable aRightVariable, Connective
     fConnective = aConnective;
 }
 
-bool Predicate::isLiteral()
+bool Predicate::isLiteral() const
 {
     return ((fConnective==NILL) || (fConnective==NOT)) && ((fRVal=="")||(fLVal==""));
 }
 
-bool Predicate::isHorn()
+bool Predicate::isHorn() const
 {
 	return (!(isLiteral()) && (fConnective == IMPLY));
 }
 
-Variable Predicate::getLiteral()
+Variable Predicate::getLiteral() const
 {
     return (fLVal!="")?fLVal:fRVal;
 }
 
-vector<Variable> Predicate::getVariables()
+vector<Variable> Predicate::getVariables() const
 {
     vector<Variable>* temp = new vector<Variable>;
     if (fLVal!="") temp->push_back(fLVal);
@@ -51,17 +51,17 @@ vector<Variable> Predicate::getVariables()
     return *temp;
 }
 
-Variable Predicate::getLeft()
+Variable Predicate::getLeft() const
 {
     return fLVal;
 }
 
-Variable Predicate::getRight()
+Variable Predicate::getRight() const
 {
     return fRVal;
 }
 
-Connective Predicate::getConnective()
+Connective Predicate::getConnective() const
 {
 	return fConnective;
 }
@@ -85,6 +85,11 @@ int Predicate::getPredicateCount(Predicate& aPredicate)
 
 ostream& operator<<(ostream& aOStream ,Predicate& aPredicate)
 {
+    aOStream << aPredicate.getLeft() << aPredicate.getConnective() << aPredicate.getRight();
     return aOStream;
 }
 
+bool operator==(const Predicate& aLHS ,const Predicate& aRHS)
+{
+    return (aLHS.getLeft()==aRHS.getLeft()) && (aLHS.getRight()==aRHS.getRight()) && (aLHS.getConnective()==aRHS.getConnective());
+}

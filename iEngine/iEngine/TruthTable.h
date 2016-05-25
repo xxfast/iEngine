@@ -21,6 +21,7 @@ class TruthTable {
     
 private:
     // MARK: Members
+    vector<Predicate> fPredicates;
     vector<vector<bool>> fValues;
     int fNColumns;
     int fNRows;
@@ -29,7 +30,9 @@ public:
     TruthTable(vector<Predicate>& aListOfPredicates, vector<Variable>& aListOfVariables);
     
     // MARK: Member functions
-    bool operator()(int r,int c);
+    vector<bool>& operator[] (Predicate aPredicate);
+    vector<bool>& operator[] (Variable aVariable);
+    vector<vector<bool>>& data();
     bool isInKnowledgeBase(Variable aAsked);
     
     // MARK: Getters
@@ -38,6 +41,7 @@ public:
     
     // MARK: Friends
     friend ostream& operator<<(ostream& aOutput, TruthTable& aTruthTable);
+    friend bool operator==(const Predicate& aLHS ,const Predicate& aRHS);
 };
 
 #endif /* TruthTable_hpp */
