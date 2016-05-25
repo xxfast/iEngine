@@ -43,6 +43,17 @@ bool IEngine::evaluvatePredicate(Predicate aPredicate, map<Variable, bool> aKeyV
 	return result;
 }
 
+bool IEngine::evaluvateCompundPredicate(CompoundPredicate aCompoundPredicate, map<Variable, bool> aKeyValues)
+{
+    //Evaluate the Given Compund Predicate
+    map<Variable,bool>& lCalculatedKeyValues = *new map<Variable,bool>();
+    lCalculatedKeyValues["A"] = evaluvatePredicate(aCompoundPredicate.getLeft(), aKeyValues);
+    lCalculatedKeyValues["B"] = evaluvatePredicate(aCompoundPredicate.getRight(), aKeyValues);
+    Predicate toSolve ("A", "B", aCompoundPredicate.getConnective());
+    bool answer = evaluvatePredicate(toSolve, lCalculatedKeyValues);
+    return answer;
+}
+
 
 bool IEngine::alreadyMapped(Variable aVariable)
 {
@@ -53,22 +64,48 @@ bool IEngine::alreadyMapped(Variable aVariable)
     return false;
 }
 
+map<Variable,bool>& IEngine::mapKeyValues(Predicate& aPredicate, TruthTable& truth, int indexToFetch, int indexToStore)
+{
+    map<Variable,bool>& lKeyValues = *new map<Variable,bool>();
+    lKeyValues[fPredicates[indexToStore].getLeft()] = truth.operator[](fPredicates[indexToStore].getLeft())[indexToFetch];
+    lKeyValues[fPredicates[indexToStore].getRight()]= truth.operator[](fPredicates[indexToStore].getRight())[indexToFetch];
+    return lKeyValues ;
+}
+
+map<Variable,bool>& IEngine::mapCompoundKeyValues(CompoundPredicate& aCompoundPredicate, TruthTable& truth, int indexToFetch, int indexToStore)
+{
+    Predicate& leftPredicate = aCompoundPredicate.getLeft();
+    Predicate& rightPredicate = aCompoundPredicate.getRight();
+    map<Variable,bool>& LeftKeyValues = mapKeyValues(leftPredicate,truth,indexToFetch,indexToStore);
+    map<Variable,bool>& RightKeyValues = mapKeyValues(rightPredicate,truth,indexToFetch,indexToStore);
+    LeftKeyValues.insert(RightKeyValues.begin(), RightKeyValues.end());
+    return LeftKeyValues;
+}
+
+
 bool IEngine::evaluateUsingTruthTable(Variable aAsked)
 {
     //Translate the predicates into a truth table
     TruthTable* truth = new TruthTable(fPredicates, fVariables);
-    
-    
     for(int i=0;i<(int)fPredicates.size();i++)
     {
         if(!fPredicates[i].isLiteral())
         {
             for(int j=0;j< truth->getRows(); j++)
             {
-                map<Variable,bool> lKeyValues;
-                lKeyValues[fPredicates[i].getLeft()]=truth->operator[](fPredicates[i].getLeft())[j];
-                lKeyValues[fPredicates[i].getRight()]=truth->operator[](fPredicates[i].getRight())[j];
-                bool result = evaluvatePredicate(fPredicates[i], lKeyValues);
+                //map<Variable,bool> lKeyValues;
+                //lKeyValues[fPredicates[i].getLeft()]=truth->operator[](fPredicates[i].getLeft())[j];
+                //lKeyValues[fPredicates[i].getRight()]=truth->operator[](fPredicates[i].getRight())[j];
+                bool result;
+                if( typeid(fPredicates[i]).name() != "CompundPredicate" )
+                {
+                    result = evaluvatePredicate(fPredicates[i], mapKeyValues(fPredicates[i],*truth,j,i));
+                }
+                else
+                {
+                    CompoundPredicate* cp = dynamic_cast<CompoundPredicate *>(&fPredicates[i]);
+                    result = evaluvatePredicate(fPredicates[i], mapCompoundKeyValues(*cp,*truth,j,i));
+                }
                 truth->data()[i][j] = result;
             }
         }

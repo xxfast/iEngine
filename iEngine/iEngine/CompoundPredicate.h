@@ -9,21 +9,19 @@
 #pragma once
 
 #include "Predicate.h"
-class CompoundPredicate
+
+class CompoundPredicate : public Predicate
 {
 private:
 	// MARK: Members
 	Predicate fLVal; //left side Predicate
 	Predicate fRVal; //right side Predicate
-	Connective fConnective; //operation between the value
 public:
 	// MARK: Constructors	
 	CompoundPredicate(Predicate aLeftPredicate, Predicate aRightPredicate, Connective aConnective);
 
 	~CompoundPredicate();
-
-
-
+    
 	// Takes a string and gets the predicate count
 	int getPredicateCount(Predicate& aPredicate);
 	
@@ -31,7 +29,10 @@ public:
 	Predicate stringToCompoundPredicate(string astring);
 
 	// MARK: Member functions
-
+    
+    Predicate& getLeft() const;
+    Predicate& getRight() const;
+    vector<Predicate>& getPredicates() const;
 
 };
 

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D30D79B11CF370B300BEB836 /* CompoundPredicate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D30D79B01CF370B300BEB836 /* CompoundPredicate.cpp */; };
+		D30D79B51CF56A9A00BEB836 /* CompoundPredicate.h in Sources */ = {isa = PBXBuildFile; fileRef = D30D79AF1CF370B300BEB836 /* CompoundPredicate.h */; };
+		D30D79B61CF56A9A00BEB836 /* CompoundPredicate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D30D79B01CF370B300BEB836 /* CompoundPredicate.cpp */; };
 		D31364881CE0891C00EA8E5D /* IEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D31364871CE0891C00EA8E5D /* IEngine.cpp */; };
 		D353C9141CD99631004963A1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D353C9131CD99631004963A1 /* main.cpp */; };
 		D353C91D1CD99F78004963A1 /* Predicate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D353C91C1CD99F78004963A1 /* Predicate.cpp */; };
@@ -107,8 +109,6 @@
 		D353C9121CD99631004963A1 /* iEngine */ = {
 			isa = PBXGroup;
 			children = (
-				D30D79AF1CF370B300BEB836 /* CompoundPredicate.h */,
-				D30D79B01CF370B300BEB836 /* CompoundPredicate.cpp */,
 				D31364861CE0891C00EA8E5D /* IEngine.h */,
 				D31364871CE0891C00EA8E5D /* IEngine.cpp */,
 				D353C9271CD9BB97004963A1 /* test.txt */,
@@ -117,6 +117,8 @@
 				D353C9131CD99631004963A1 /* main.cpp */,
 				D353C91B1CD99D0E004963A1 /* Predicate.h */,
 				D353C91C1CD99F78004963A1 /* Predicate.cpp */,
+				D30D79AF1CF370B300BEB836 /* CompoundPredicate.h */,
+				D30D79B01CF370B300BEB836 /* CompoundPredicate.cpp */,
 				D382DFAC1CE4721D00BD79C9 /* TruthTable.h */,
 				D382DFAB1CE4721D00BD79C9 /* TruthTable.cpp */,
 			);
@@ -225,6 +227,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D30D79B51CF56A9A00BEB836 /* CompoundPredicate.h in Sources */,
+				D30D79B61CF56A9A00BEB836 /* CompoundPredicate.cpp in Sources */,
 				D3A6370F1CEC9D51001B7824 /* TruthTable.cpp in Sources */,
 				D3A637061CEC823A001B7824 /* main.cpp in Sources */,
 				D3A636FE1CEC8215001B7824 /* IEngine.h in Sources */,
