@@ -68,7 +68,7 @@ bool IEngine::evaluateUsingTruthTable(Variable aAsked)
                 map<Variable,bool> lKeyValues;
                 lKeyValues[fPredicates[i].getLeft()]=truth->operator[](fPredicates[i].getLeft())[j];
                 lKeyValues[fPredicates[i].getRight()]=truth->operator[](fPredicates[i].getRight())[j];
-                bool result =evaluvatePredicate(fPredicates[i], lKeyValues);
+                bool result = evaluvatePredicate(fPredicates[i], lKeyValues);
                 truth->data()[i][j] = result;
             }
         }

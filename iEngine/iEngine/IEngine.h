@@ -24,6 +24,7 @@ private:
     
     // MARK: Private Member function
     bool evaluateUsingTruthTable(Variable aAsked);
+    map<Variable,bool> mapKeyValues();
     bool alreadyMapped(Variable aVariable);
 public:
     

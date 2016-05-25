@@ -67,7 +67,10 @@ ostream& operator<<(ostream& aOStream ,Predicate& aPredicate)
     return aOStream;
 }
 
+<<<<<<< HEAD
 bool operator==(const Predicate& aLHS ,const Predicate& aRHS)
 {
     return (aLHS.getLeft()==aRHS.getLeft()) && (aLHS.getRight()==aRHS.getRight()) && (aLHS.getConnective()==aRHS.getConnective());
 }
+=======
+>>>>>>> master

@@ -45,8 +45,12 @@ public:
     // MARK: Friends
     
     friend ostream& operator<<(ostream& aOStream ,Predicate& aPredicate);
+<<<<<<< HEAD
     friend bool operator==(const Predicate& aLHS ,const Predicate& aRHS);
     friend bool operator<(const Predicate& aLHS ,const Predicate& aRHS);
+=======
+
+>>>>>>> master
 };
 
 #endif /* Predicate_h */

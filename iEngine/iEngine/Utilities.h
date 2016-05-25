@@ -1,3 +1,11 @@
+﻿//
+//  Utilities.cpp
+//  iEngine
+//
+//  Created by Ian Adrian Wisata Isuru Kusumal Rajapakse Srisaiyeegharan Kidnapillai on 5/4/16.
+//  Copyright � 2016 Isuru Kusumal Rajapakse. All rights reserved.
+//
+
 #pragma once
 #include <iostream>
 #include <string.h>
@@ -37,5 +45,5 @@ public:
     static Method stringToMethod(string aString);
     static string predicateToString(Predicate& aPredicate);
      
-    
+	
 };
