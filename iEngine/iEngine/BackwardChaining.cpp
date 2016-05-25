@@ -28,6 +28,8 @@ vector<Predicate> BackwardChaining::evaluate(map<Predicate, int> aHorn, Predicat
 	
 	fAgenda.push_back(aAsked);
 
+
+
 	while (!fAgenda.empty())
 	{
 		fInferred.push_back(fAgenda.back());
