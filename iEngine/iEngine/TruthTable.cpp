@@ -12,22 +12,25 @@ TruthTable::TruthTable(vector<Predicate>& aListOfPredicates, vector<Variable>& a
 {
     //Populate literals colomns first
     //Set number of columns to the size of predicates
-    fNColumns = (int)aListOfPredicates.size();
+    fPredicates = aListOfPredicates;
+    
+    fNColumns = (int)fPredicates.size();
     fNRows = pow(2,aListOfVariables.size());
-    fValues.resize(fNColumns,vector<bool>(fNRows));
     
-    
-    for(int i=(int)aListOfPredicates.size()-1;i>=0;i--)
+    fValues.resize(fNColumns);
+    int d = (int)(aListOfPredicates.size() - aListOfVariables.size()) - 1;
+    for(int i=0;i<fPredicates.size();i++)
     {
+        fValues[i].resize(fNRows);
         //Create values for literals first
-        if(aListOfPredicates[i].isLiteral())
+        if(fPredicates[i].isLiteral())
         {
             bool lSwitch = 0;
             int flip = 0;
             for(int j=0;j< fNRows; j++)
             {
                 flip++;
-                int tPow = pow(2,(i-1))/2;
+                int tPow = pow(2,i-d)/2;
                 if ( flip > tPow )
                 {
                     lSwitch=!lSwitch;
@@ -38,9 +41,37 @@ TruthTable::TruthTable(vector<Predicate>& aListOfPredicates, vector<Variable>& a
         }
     }
 }
-bool TruthTable::operator()(int r, int c)
+
+vector<bool>& TruthTable::operator[] (Predicate aPredicate)
 {
-    return fValues[r][c];
+    for(int i=0;i<fPredicates.size();i++)
+    {
+        if(aPredicate==fPredicates[i])
+        {
+            return fValues[i];
+        }
+    }
+    throw domain_error("Predicate requested from the truth table is not found");
+}
+
+vector<bool>& TruthTable::operator[] (Variable aVariable)
+{
+    for(int i=0;i<fPredicates.size();i++)
+    {
+        if(fPredicates[i].isLiteral())
+        {
+            if(aVariable ==fPredicates[i].getLiteral())
+            {
+                return fValues[i];
+            }
+        }
+    }
+    throw domain_error("Predicate requested from the truth table is not found");
+}
+
+vector<vector<bool>>& TruthTable::data()
+{
+    return fValues;
 }
 
 bool TruthTable::isInKnowledgeBase(Variable aAsked)
@@ -60,14 +91,14 @@ int TruthTable::getCols() const
 
 ostream& operator<<(ostream& aOutput, TruthTable& aTruthTable)
 {
-    for (int r = 0; r < aTruthTable.fNRows ; r++)
+    for(int i=0;i<aTruthTable.fNColumns;i++)
     {
-        for(int c = 0; c< aTruthTable.fNColumns ; c++)
+        cout << i <<":"<< setw(4)<< aTruthTable.fPredicates[i];
+        for(int j=0;j< aTruthTable.fNRows; j++)
         {
-            cout << setw(2) << aTruthTable(c,r);
+            cout << setw(2) <<aTruthTable.fValues[i][j];
         }
         cout << endl;
     }
-    
     return aOutput;
 }

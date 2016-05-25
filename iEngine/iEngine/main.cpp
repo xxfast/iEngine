@@ -8,7 +8,6 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	Predicate myPred = Utilities::stringToPredicate("b&e => f");
 	if (argc < 1)
 	{
 		cerr << "Arguments missing" << endl;
@@ -39,11 +38,18 @@ int main(int argc, char* argv[])
     
 	cout << "iEngine Driver Program" << endl;
     
-    Predicate myPredicate(Utilities::stringToPredicate("P=>E"));
-    vector<Predicate>* myPredicates = new vector<Predicate>();
-    myPredicates->push_back(myPredicate);
+    Predicate p1(Utilities::stringToPredicate("P=>E"));
+    Predicate p2(Utilities::stringToPredicate("P"));
+    Predicate p3(Utilities::stringToPredicate("E"));
+    
+    vector<Predicate>& myPredicates = *new vector<Predicate>();
+    
+    myPredicates.push_back(p1);
+    myPredicates.push_back(p2);
+    myPredicates.push_back(p3);
+    
     // Instatiate iEngine on the Heap
-    IEngine* testEngine = new IEngine(*myPredicates);
+    IEngine* testEngine = new IEngine(myPredicates);
     cout << testEngine->process(Method::TT, "P") <<endl;
     
     

@@ -22,10 +22,12 @@ enum Connective {NILL,NOT,IMPLY,AND,OR,EQU};
 
 class Predicate
 {
+protected:
+    Connective fConnective; //operation between the value
+    
 private:
     Variable fLVal; //left side variable
     Variable fRVal; //right side variable
-    Connective fConnective; //operation between the value
 public:
     // MARK: Constructors
     Predicate();
@@ -35,13 +37,14 @@ public:
     
     // MARK: Setter and Getters
     
-    bool isLiteral();
-	bool isHorn();
-    Variable getLiteral();
-    vector<Variable> getVariables();
-    Variable getLeft();
-    Variable getRight();
-	Connective getConnective();
+
+    bool isLiteral() const;
+	bool isHorn() const;
+    Variable getLiteral() const;
+    vector<Variable> getVariables() const;
+    Variable getLeft() const;
+    Variable getRight() const;
+	virtual Connective getConnective() const;
 
 	// Takes a string and gets the predicate count
 	int getPredicateCount(Predicate& aPredicate);
@@ -49,7 +52,8 @@ public:
     // MARK: Friends
     
     friend ostream& operator<<(ostream& aOStream ,Predicate& aPredicate);
-
+    friend bool operator==(const Predicate& aLHS ,const Predicate& aRHS);
+    friend bool operator<(const Predicate& aLHS ,const Predicate& aRHS);
 };
 
 #endif /* Predicate_h */
