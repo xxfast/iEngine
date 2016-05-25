@@ -20,15 +20,7 @@ public:
 	// MARK: Constructors	
 	CompoundPredicate(Predicate aLeftPredicate, Predicate aRightPredicate, Connective aConnective);
 	~CompoundPredicate();
-
-
-
-	// Takes a string and gets the predicate count
-	int getPredicateCount(Predicate& aPredicate);
 	
-	// Takes a string and changes it to predicate
-	Predicate stringToCompoundPredicate(string astring);
-
 	// MARK: Member functions
 
 

@@ -1,1 +1,10 @@
-﻿LINK : fatal error LNK1168: cannot open C:\Users\Sri\Desktop\2nd Year\AI\Assignment 2\iEngine\iEngine\Debug\iEngine.exe for writing
+﻿  Predicate.cpp
+  ForwardChaining.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
+  Utilities.cpp
+  TruthTable.cpp
+  IEngine.cpp
+  CompoundPredicate.cpp
+  iEngine.vcxproj -> D:\Swinburne\Semester3\Introduction_to_AI\MyFolder\Assignment2\TeamProject\iEngine\iEngine\Debug\iEngine.exe

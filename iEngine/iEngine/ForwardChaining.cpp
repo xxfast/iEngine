@@ -1,7 +1,12 @@
+//
+//  ForwardChaining.cpp
+//  iEngine
+//
+//  Created by Ian Adrian Wisata on 5/25/16.
+//  Copyright © 2016 Ian Adrian Wisata. All rights reserved.
+//
+
 #include "ForwardChaining.h"
-
-
-
 ForwardChaining::ForwardChaining()
 {
 
