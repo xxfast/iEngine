@@ -36,11 +36,15 @@ public:
     // MARK: Setter and Getters
     
     bool isLiteral();
+	bool isHorn();
     Variable getLiteral();
     vector<Variable> getVariables();
     Variable getLeft();
     Variable getRight();
 	Connective getConnective();
+
+	// Takes a string and gets the predicate count
+	int getPredicateCount(Predicate& aPredicate);
     
     // MARK: Friends
     
