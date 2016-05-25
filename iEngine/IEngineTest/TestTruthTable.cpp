@@ -23,13 +23,13 @@ void TestTruthTable()
     Predicate p5 (Utilities::stringToPredicate("C"));
     Predicate p6 (Utilities::stringToPredicate("D"));
     
-    vector<Predicate> myPredicates ;
-    myPredicates.push_back(p1);
-    myPredicates.push_back(p2);
-    myPredicates.push_back(p3);
-    myPredicates.push_back(p4);
-    myPredicates.push_back(p5);
-    myPredicates.push_back(p6);
+    vector<Predicate*> myPredicates ;
+    myPredicates.push_back(&p1);
+    myPredicates.push_back(&p2);
+    myPredicates.push_back(&p3);
+    myPredicates.push_back(&p4);
+    myPredicates.push_back(&p5);
+    myPredicates.push_back(&p6);
     
     vector<Variable> myVariables;
     myVariables.push_back("A");

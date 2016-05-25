@@ -2,13 +2,14 @@
 
 using namespace std;
 
-IEngine::IEngine(vector<Predicate> aPredicates)
+IEngine::IEngine(vector<Predicate*> aPredicates)
 {
     //Analyse the predicates and generate the list of variables
     fPredicates = aPredicates;
+   
     for(int i=(int)aPredicates.size()-1;i>=0;i--)
     {
-        vector<Variable> temp = aPredicates[i].getVariables();
+        vector<Variable> temp = aPredicates[i]->getVariables();
         for(int i=0;i<temp.size();i++)
             if(!alreadyMapped(temp[i]))
                 fVariables.push_back(temp[i]);
@@ -64,18 +65,24 @@ bool IEngine::alreadyMapped(Variable aVariable)
     return false;
 }
 
-map<Variable,bool>& IEngine::mapKeyValues(Predicate& aPredicate, TruthTable& truth, int indexToFetch, int indexToStore)
+map<Variable,bool>& IEngine::mapKeyValues(Predicate* aPredicate, TruthTable& truth, int indexToFetch, int indexToStore)
 {
     map<Variable,bool>& lKeyValues = *new map<Variable,bool>();
-    lKeyValues[fPredicates[indexToStore].getLeft()] = truth.operator[](fPredicates[indexToStore].getLeft())[indexToFetch];
-    lKeyValues[fPredicates[indexToStore].getRight()]= truth.operator[](fPredicates[indexToStore].getRight())[indexToFetch];
+    if (aPredicate->getLeft()!="")
+    {
+        lKeyValues[aPredicate->getLeft()] = truth.operator[](aPredicate->getLeft())[indexToFetch];
+    }
+    if (aPredicate->getRight()!="")
+    {
+        lKeyValues[aPredicate->getRight()]= truth.operator[](aPredicate->getRight())[indexToFetch];
+    }
     return lKeyValues ;
 }
 
 map<Variable,bool>& IEngine::mapCompoundKeyValues(CompoundPredicate& aCompoundPredicate, TruthTable& truth, int indexToFetch, int indexToStore)
 {
-    Predicate& leftPredicate = aCompoundPredicate.getLeft();
-    Predicate& rightPredicate = aCompoundPredicate.getRight();
+    Predicate* leftPredicate = &aCompoundPredicate.getLeft();
+    Predicate* rightPredicate = &aCompoundPredicate.getRight();
     map<Variable,bool>& LeftKeyValues = mapKeyValues(leftPredicate,truth,indexToFetch,indexToStore);
     map<Variable,bool>& RightKeyValues = mapKeyValues(rightPredicate,truth,indexToFetch,indexToStore);
     LeftKeyValues.insert(RightKeyValues.begin(), RightKeyValues.end());
@@ -89,7 +96,7 @@ bool IEngine::evaluateUsingTruthTable(Variable aAsked)
     TruthTable* truth = new TruthTable(fPredicates, fVariables);
     for(int i=0;i<(int)fPredicates.size();i++)
     {
-        if(!fPredicates[i].isLiteral())
+        if(!fPredicates[i]->isLiteral())
         {
             for(int j=0;j< truth->getRows(); j++)
             {
@@ -97,20 +104,22 @@ bool IEngine::evaluateUsingTruthTable(Variable aAsked)
                 //lKeyValues[fPredicates[i].getLeft()]=truth->operator[](fPredicates[i].getLeft())[j];
                 //lKeyValues[fPredicates[i].getRight()]=truth->operator[](fPredicates[i].getRight())[j];
                 bool result;
-                if( typeid(fPredicates[i]).name() != "CompundPredicate" )
+                //string test = typeid(fPredicates[i]).name();
+                auto* cp = dynamic_cast<CompoundPredicate *>(fPredicates[i]);
+                if( cp==NULL )
                 {
-                    result = evaluvatePredicate(fPredicates[i], mapKeyValues(fPredicates[i],*truth,j,i));
+                    result = evaluvatePredicate(*fPredicates[i], mapKeyValues(fPredicates[i],*truth,j,i));
                 }
                 else
                 {
-                    CompoundPredicate* cp = dynamic_cast<CompoundPredicate *>(&fPredicates[i]);
-                    result = evaluvatePredicate(fPredicates[i], mapCompoundKeyValues(*cp,*truth,j,i));
+                    
+                    result = evaluvateCompundPredicate(*cp, mapCompoundKeyValues(*cp,*truth,j,i));
                 }
                 truth->data()[i][j] = result;
             }
         }
     }
-    //cout << *truth;
+    cout << *truth;
     return truth->isInKnowledgeBase(aAsked);
 }
 
