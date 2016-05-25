@@ -65,3 +65,4 @@ ostream& operator<<(ostream& aOStream ,Predicate& aPredicate)
 {
     return aOStream;
 }
+

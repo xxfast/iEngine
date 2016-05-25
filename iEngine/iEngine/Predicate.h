@@ -45,6 +45,7 @@ public:
     // MARK: Friends
     
     friend ostream& operator<<(ostream& aOStream ,Predicate& aPredicate);
+
 };
 
 #endif /* Predicate_h */

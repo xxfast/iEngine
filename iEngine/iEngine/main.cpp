@@ -8,7 +8,7 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-    
+	Predicate myPred = Utilities::stringToPredicate("b&e => f");
 	if (argc < 1)
 	{
 		cerr << "Arguments missing" << endl;
