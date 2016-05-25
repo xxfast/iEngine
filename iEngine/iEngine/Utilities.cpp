@@ -154,21 +154,6 @@ Predicate Utilities::stringToCompoundPredicate(string aString)
 		}
 	}
 
-	for (int i = 0; i < lLVal.size(); i++)
-	{
-		string toSearch = Utilities::connectiveToString(lAllPossibleConnectives[i]);
-		size_t lPosition = lLVal.find(toSearch);
-		if (lPosition != string::npos)
-		{
-			lCompoundConnective = lAllPossibleConnectives[i];
-			lLCompoundRVal = aString.substr(lPosition + toSearch.size(), aString.size() - lPosition + toSearch.size());
-			lLCompoundLVal = aString.substr(0, aString.size() - lLCompoundRVal.size() - toSearch.size());
-			break;
-		}
-
-	}
-	if (lCompoundConnective == NILL) lLCompoundLVal = aString;
-
 	Predicate* myCompoundPredicate = new Predicate(lLCompoundLVal, lLCompoundRVal, lCompoundConnective);
 	return *myCompoundPredicate;
 

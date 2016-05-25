@@ -20,18 +20,18 @@ enum Method {TT,FC,BC};
 class IEngine
 {
 private:
-    vector<Predicate> fPredicates;
+    vector<Predicate*> fPredicates;
     vector<Variable> fVariables;
     
     // MARK: Private Member function
     bool evaluateUsingTruthTable(Variable aAsked);
-    map<Variable,bool>& mapKeyValues(Predicate& aPredicate, TruthTable& truth, int indexToFetch, int indexToStore);
+    map<Variable,bool>& mapKeyValues(Predicate* aPredicate, TruthTable& truth, int indexToFetch, int indexToStore);
     map<Variable,bool>& mapCompoundKeyValues(CompoundPredicate& aCompoundPredicate, TruthTable& truth, int indexToFetch, int indexToStore);
     bool alreadyMapped(Variable aVariable);
 public:
     
     // MARK: Constructors
-    IEngine(vector<Predicate> aPredicates);
+    IEngine(vector<Predicate*> aPredicates);
     ~IEngine();
     
     // MARK: Member function

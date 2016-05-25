@@ -42,11 +42,11 @@ int main(int argc, char* argv[])
     Predicate p2(Utilities::stringToPredicate("P"));
     Predicate p3(Utilities::stringToPredicate("E"));
     
-    vector<Predicate>& myPredicates = *new vector<Predicate>();
+    vector<Predicate*> myPredicates;
     
-    myPredicates.push_back(p1);
-    myPredicates.push_back(p2);
-    myPredicates.push_back(p3);
+    myPredicates.push_back(&p1);
+    myPredicates.push_back(&p2);
+    myPredicates.push_back(&p3);
     
     // Instatiate iEngine on the Heap
     IEngine* testEngine = new IEngine(myPredicates);

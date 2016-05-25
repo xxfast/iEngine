@@ -58,4 +58,10 @@ Predicate& CompoundPredicate::getRight() const
     return (Predicate&)fRVal;
 }
 
+ostream& operator<<(ostream& aOStream ,CompoundPredicate& aCompoundPredicate)
+{
+    aOStream << aCompoundPredicate.getLeft() << Utilities::connectiveToString(aCompoundPredicate.getConnective()) << aCompoundPredicate.getRight();
+    return aOStream;
+}
+
 

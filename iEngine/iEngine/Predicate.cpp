@@ -85,7 +85,7 @@ int Predicate::getPredicateCount(Predicate& aPredicate)
 
 ostream& operator<<(ostream& aOStream ,Predicate& aPredicate)
 {
-    aOStream << aPredicate.getLeft() << aPredicate.getConnective() << aPredicate.getRight();
+    aOStream << aPredicate.getLeft() << Utilities::connectiveToString(aPredicate.getConnective()) << aPredicate.getRight();
     return aOStream;
 }
 
