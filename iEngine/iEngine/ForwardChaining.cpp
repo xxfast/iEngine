@@ -19,7 +19,9 @@ ForwardChaining::ForwardChaining(vector<Predicate> aPredicates)
 		}
 		else
 		{
+			if (lPredicate.isHorn())
 			{
+				/*fHorn[lPredicate] = lPredicate.getPredicatesCount();*/ // unimplemented method
 			}
 		}
 
