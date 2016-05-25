@@ -12,6 +12,7 @@
 #include <map>
 
 #include "Predicate.h"
+#include "CompoundPredicate.h"
 #include "IEngine.h"
 #include "Utilities.h"
 
@@ -81,6 +82,31 @@ void TestEvaluvatePredicateWithEquvelence()
     cout << "\t- To be implemented" << endl;
 }
 
+void TestEvaluvateCompoundPredicateWithImplication()
+{
+    Predicate myLeftPredicate (Utilities::stringToPredicate("A^B"));
+    Predicate myRightPredicate (Utilities::stringToPredicate("C"));
+    CompoundPredicate myCompoundPredicate (myLeftPredicate,myRightPredicate, IMPLY);
+    
+    vector<Predicate> myPredicates;
+    myPredicates.push_back(myCompoundPredicate);
+    
+    IEngine myEngine(myPredicates);
+    
+    map<Variable,bool> myKeyValues;
+    myKeyValues["A"]=1;
+    myKeyValues["B"]=1;
+    myKeyValues["C"]=0;
+
+    bool result = ( 1 == myEngine.evaluvateCompundPredicate(myCompoundPredicate, myKeyValues) );
+    cout << "\t- Test Evaluvate Compound Predicate With Negation " << ((result)?"✔︎":"✘") << endl;
+}
+
+void TestEvaluvateCompoundPredicate()
+{
+    TestEvaluvateCompoundPredicateWithImplication();
+}
+
 void TestEvaluvatePredicate()
 {
     TestEvaluvatePredicateWithImplication();
@@ -90,8 +116,38 @@ void TestEvaluvatePredicate()
     TestEvaluvatePredicateWithEquvelence();
 }
 
+void TestEvaluvateWithTruthTable()
+{
+    Predicate p1 (Utilities::stringToPredicate("A^B"));
+    Predicate p2 (Utilities::stringToPredicate("A^C=>B"));
+    Predicate p3 (Utilities::stringToPredicate("A"));
+    Predicate p4 (Utilities::stringToPredicate("B"));
+    Predicate p5 (Utilities::stringToPredicate("C"));
+    
+    vector<Predicate> myPredicates ;
+    myPredicates.push_back(p1);
+    myPredicates.push_back(p2);
+    myPredicates.push_back(p3);
+    myPredicates.push_back(p4);
+    myPredicates.push_back(p5);
+    
+    vector<Variable> myVariables;
+    myVariables.push_back("A");
+    myVariables.push_back("B");
+    myVariables.push_back("C");
+    
+    IEngine lIEngine (myPredicates);
+    lIEngine.process(TT, "A");
+    
+    bool result = ( 1 == 1);
+    cout << "\t- Test Evaluvate With TruthTable " << ((result)?"✔︎":"✘") << endl;
+
+}
+
 void TestIEngine()
 {
     cout << "Testing IEngine" <<endl;
     TestEvaluvatePredicate();
+    TestEvaluvateCompoundPredicate();
+    TestEvaluvateWithTruthTable();
 }

@@ -21,6 +21,7 @@ void TestTruthTable()
     Predicate p3 (Utilities::stringToPredicate("A"));
     Predicate p4 (Utilities::stringToPredicate("B"));
     Predicate p5 (Utilities::stringToPredicate("C"));
+    Predicate p6 (Utilities::stringToPredicate("D"));
     
     vector<Predicate> myPredicates ;
     myPredicates.push_back(p1);
@@ -28,15 +29,17 @@ void TestTruthTable()
     myPredicates.push_back(p3);
     myPredicates.push_back(p4);
     myPredicates.push_back(p5);
+    myPredicates.push_back(p6);
     
     vector<Variable> myVariables;
     myVariables.push_back("A");
     myVariables.push_back("B");
     myVariables.push_back("C");
+    myVariables.push_back("D");
     
     TruthTable myTruthTable (myPredicates,myVariables);
     
-    cout << myTruthTable;
+    //cout << myTruthTable;
     
     bool result = (1==1);
     cout << "\t- Testing TruthTable " << ((result)?"✔︎":"✘") << endl;

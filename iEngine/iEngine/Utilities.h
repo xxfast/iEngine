@@ -33,14 +33,16 @@ public:
      
 	//Convert the String to a Connective
 	static string connectiveToString(Connective aConnective);
+    
 
     // Takes an input file stream as the input
     // and and generates a vector of predicates from each the input
     // and return the vector of predicates
     static vector<Predicate> generatePredicates(ifstream& aInput);
     
-    // Takes a string and convert it to a iEngine method
+    // Takes a string and convert it to others
     static Method stringToMethod(string aString);
+    static string predicateToString(Predicate& aPredicate);
      
 	// Takes a string and changes it to predicate
 	static Predicate stringToCompoundPredicate(string astring);
