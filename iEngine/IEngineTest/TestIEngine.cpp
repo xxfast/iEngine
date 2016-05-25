@@ -25,8 +25,8 @@ void TestEvaluvatePredicateWithImplication()
     myKeyValues["A"]=1;
     myKeyValues["B"]=0;
     
-    vector<Predicate> myPredicates;
-    myPredicates.push_back(myPredicate);
+    vector<Predicate*> myPredicates;
+    myPredicates.push_back(&myPredicate);
     IEngine myEngine(myPredicates);
     
     bool result = ( 0 == myEngine.evaluvatePredicate(myPredicate, myKeyValues) );
@@ -37,8 +37,8 @@ void TestEvaluvatePredicateWithUnion()
 {
     Predicate myPredicate (Utilities::stringToPredicate("A^B"));
     
-    vector<Predicate> myPredicates;
-    myPredicates.push_back(myPredicate);
+    vector<Predicate*> myPredicates;
+    myPredicates.push_back(&myPredicate);
     IEngine myEngine(myPredicates);
     
     map<Variable,bool> myKeyValues;
@@ -52,8 +52,8 @@ void TestEvaluvatePredicateWithIntersect()
 {
     Predicate myPredicate (Utilities::stringToPredicate("A\/B"));
     
-    vector<Predicate> myPredicates;
-    myPredicates.push_back(myPredicate);
+    vector<Predicate*> myPredicates;
+    myPredicates.push_back(&myPredicate);
     IEngine myEngine(myPredicates);
     
     map<Variable,bool> myKeyValues;
@@ -67,8 +67,8 @@ void TestEvaluvatePredicateWithNegation()
 {
     Predicate myPredicate (Utilities::stringToPredicate("~B"));
     
-    vector<Predicate> myPredicates;
-    myPredicates.push_back(myPredicate);
+    vector<Predicate*> myPredicates;
+    myPredicates.push_back(&myPredicate);
     IEngine myEngine(myPredicates);
     
     map<Variable,bool> myKeyValues;
@@ -88,8 +88,8 @@ void TestEvaluvateCompoundPredicateWithImplication()
     Predicate myRightPredicate (Utilities::stringToPredicate("C"));
     CompoundPredicate myCompoundPredicate (myLeftPredicate,myRightPredicate, IMPLY);
     
-    vector<Predicate> myPredicates;
-    myPredicates.push_back(myCompoundPredicate);
+    vector<Predicate*> myPredicates;
+    myPredicates.push_back(&myCompoundPredicate);
     
     IEngine myEngine(myPredicates);
     
@@ -118,18 +118,18 @@ void TestEvaluvatePredicate()
 
 void TestEvaluvateWithTruthTable()
 {
-    Predicate p1 (Utilities::stringToPredicate("A^B"));
-    Predicate p2 (Utilities::stringToPredicate("A^C=>B"));
+    CompoundPredicate p1 (CompoundPredicate (Utilities::stringToPredicate("A^C"),Utilities::stringToPredicate("B"),IMPLY));
+    Predicate p2 (Utilities::stringToPredicate("A^B"));
     Predicate p3 (Utilities::stringToPredicate("A"));
     Predicate p4 (Utilities::stringToPredicate("B"));
     Predicate p5 (Utilities::stringToPredicate("C"));
     
-    vector<Predicate> myPredicates ;
-    myPredicates.push_back(p1);
-    myPredicates.push_back(p2);
-    myPredicates.push_back(p3);
-    myPredicates.push_back(p4);
-    myPredicates.push_back(p5);
+    vector<Predicate*> myPredicates ;
+    myPredicates.push_back(&p1);
+    myPredicates.push_back(&p2);
+    myPredicates.push_back(&p3);
+    myPredicates.push_back(&p4);
+    myPredicates.push_back(&p5);
     
     vector<Variable> myVariables;
     myVariables.push_back("A");

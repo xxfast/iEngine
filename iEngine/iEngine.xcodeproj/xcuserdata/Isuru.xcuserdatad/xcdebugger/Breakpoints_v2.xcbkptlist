@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IEngineTest/TestIEngine.cpp"
-            timestampString = "485851835.208422"
+            filePath = "iEngine/CompoundPredicate.cpp"
+            timestampString = "485867395.645304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "TestEvaluvateWithTruthTable()"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "operator&lt;&lt;(ostream&amp; aOStream ,CompoundPredicate&amp; aCompoundPredicate)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

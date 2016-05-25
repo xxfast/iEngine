@@ -21,13 +21,13 @@ class TruthTable {
     
 private:
     // MARK: Members
-    vector<Predicate> fPredicates;
+    vector<Predicate*> fPredicates;
     vector<vector<bool>> fValues;
     int fNColumns;
     int fNRows;
 public:
     // MARK: Constructors
-    TruthTable(vector<Predicate>& aListOfPredicates, vector<Variable>& aListOfVariables);
+    TruthTable(vector<Predicate*>& aListOfPredicates, vector<Variable>& aListOfVariables);
     
     // MARK: Member functions
     vector<bool>& operator[] (Predicate aPredicate);

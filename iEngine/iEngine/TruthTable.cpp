@@ -8,7 +8,7 @@
 
 #include "TruthTable.h"
 
-TruthTable::TruthTable(vector<Predicate>& aListOfPredicates, vector<Variable>& aListOfVariables)
+TruthTable::TruthTable(vector<Predicate*>& aListOfPredicates, vector<Variable>& aListOfVariables)
 {
     //Populate literals colomns first
     //Set number of columns to the size of predicates
@@ -23,7 +23,7 @@ TruthTable::TruthTable(vector<Predicate>& aListOfPredicates, vector<Variable>& a
     {
         fValues[i].resize(fNRows);
         //Create values for literals first
-        if(fPredicates[i].isLiteral())
+        if(fPredicates[i]->isLiteral())
         {
             bool lSwitch = 0;
             int flip = 0;
@@ -46,7 +46,7 @@ vector<bool>& TruthTable::operator[] (Predicate aPredicate)
 {
     for(int i=0;i<fPredicates.size();i++)
     {
-        if(aPredicate==fPredicates[i])
+        if(aPredicate==*fPredicates[i])
         {
             return fValues[i];
         }
@@ -58,9 +58,9 @@ vector<bool>& TruthTable::operator[] (Variable aVariable)
 {
     for(int i=0;i<fPredicates.size();i++)
     {
-        if(fPredicates[i].isLiteral())
+        if(fPredicates[i]->isLiteral())
         {
-            if(aVariable ==fPredicates[i].getLiteral())
+            if(aVariable ==fPredicates[i]->getLiteral())
             {
                 return fValues[i];
             }
@@ -93,12 +93,11 @@ ostream& operator<<(ostream& aOutput, TruthTable& aTruthTable)
 {
     for(int i=0;i<aTruthTable.fNColumns;i++)
     {
-        cout << i <<":"<< setw(4)<< aTruthTable.fPredicates[i];
         for(int j=0;j< aTruthTable.fNRows; j++)
         {
             cout << setw(2) <<aTruthTable.fValues[i][j];
         }
-        cout << endl;
+        cout <<" - "<< i <<":"<< setw(4)<< *(aTruthTable.fPredicates[i]) << endl;
     }
     return aOutput;
 }
