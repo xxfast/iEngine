@@ -10,6 +10,7 @@
 
 #include <vector>
 #include "Predicate.h"
+#include "TruthTable.h"
 
 using namespace std;
 
@@ -22,9 +23,8 @@ private:
     vector<Variable> fVariables;
     
     // MARK: Private Member function
-    bool evaluateUsingTruthTable();
+    bool evaluateUsingTruthTable(Variable aAsked);
     bool alreadyMapped(Variable aVariable);
-    bool evaluvatePredicate(Predicate p,map<Variable,bool> keyValues);
 public:
     
     // MARK: Constructors
@@ -32,5 +32,6 @@ public:
     ~IEngine();
     
     // MARK: Member function
-    bool process(Method aMethod);
+    bool process(Method aMethod, Variable aAsked);
+    bool evaluvatePredicate(Predicate aPredicate,map<Variable,bool> aKeyValues);
 };

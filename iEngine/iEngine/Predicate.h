@@ -29,20 +29,27 @@ private:
 public:
     // MARK: Constructors
     Predicate();
-    Predicate(string aInputString); // Default Constructor
+    Predicate(Variable aLeftVariable, Variable aRightVariable, Connective aConnective); // Default Constructor
     
     // MARK: Member Functions
     
     // MARK: Setter and Getters
     
     bool isLiteral();
+	bool isHorn();
+    Variable getLiteral();
     vector<Variable> getVariables();
     Variable getLeft();
     Variable getRight();
+	Connective getConnective();
+
+	// Takes a string and gets the predicate count
+	int getPredicateCount(Predicate& aPredicate);
     
     // MARK: Friends
     
     friend ostream& operator<<(ostream& aOStream ,Predicate& aPredicate);
+
 };
 
 #endif /* Predicate_h */

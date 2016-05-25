@@ -2,7 +2,7 @@
 //  Predicate.cpp
 //  iEngine
 //
-//  Created by Isuru Kusumal Rajapakse on 5/4/16.
+//  Created by Ian Adrian Wisata, Isuru Kusumal Rajapakse on 5/4/16.
 //  Copyright © 2016 Isuru Kusumal Rajapakse. All rights reserved.
 //
 
@@ -21,20 +21,26 @@ Predicate::Predicate()
     fConnective=NILL;
 }
 
-Predicate::Predicate(string aInputString)
+Predicate::Predicate(Variable aLeftVariable, Variable aRightVariable, Connective aConnective)
 {
-    fLVal = aInputString[0];
-    fRVal = aInputString[aInputString.length()-1];
-    if(aInputString.length()>=4)
-        fConnective = Utilities::stringToConnective(aInputString.substr(1,2));
-    else
-        fConnective = Utilities::stringToConnective(aInputString.substr(1,1));
-    
+    fLVal = aLeftVariable;
+    fRVal = aRightVariable;
+    fConnective = aConnective;
 }
 
 bool Predicate::isLiteral()
 {
-    return (fConnective==NILL) && (fRVal=="");
+    return ((fConnective==NILL) || (fConnective==NOT)) && ((fRVal=="")||(fLVal==""));
+}
+
+bool Predicate::isHorn()
+{
+	return (!(isLiteral()) && (fConnective == IMPLY));
+}
+
+Variable Predicate::getLiteral()
+{
+    return (fLVal!="")?fLVal:fRVal;
 }
 
 vector<Variable> Predicate::getVariables()
@@ -55,7 +61,30 @@ Variable Predicate::getRight()
     return fRVal;
 }
 
+Connective Predicate::getConnective()
+{
+	return fConnective;
+}
+
+int Predicate::getPredicateCount(Predicate& aPredicate)
+{
+	int lResult = 0;
+	Predicate lPredicate = aPredicate;
+	if (!aPredicate.isLiteral())
+	{
+		lResult++;
+		while (lPredicate.getLeft().size() != 1)
+		{
+			lResult++;
+			lPredicate = Utilities::stringToPredicate(aPredicate.getLeft());
+		}
+	}
+	return lResult;
+}
+
+
 ostream& operator<<(ostream& aOStream ,Predicate& aPredicate)
 {
     return aOStream;
 }
+

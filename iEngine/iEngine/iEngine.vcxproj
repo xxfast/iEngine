@@ -79,14 +79,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CompoundPredicate.cpp" />
+    <ClCompile Include="ForwardChaining.cpp" />
     <ClCompile Include="IEngine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Predicate.cpp" />
+    <ClCompile Include="TruthTable.cpp" />
     <ClCompile Include="Utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CompoundPredicate.h" />
+    <ClInclude Include="ForwardChaining.h" />
     <ClInclude Include="IEngine.h" />
     <ClInclude Include="Predicate.h" />
+    <ClInclude Include="TruthTable.h" />
     <ClInclude Include="Utilities.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
