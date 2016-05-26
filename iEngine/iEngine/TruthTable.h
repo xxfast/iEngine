@@ -1,4 +1,3 @@
-//
 //  TruthTable.hpp
 //  iEngine
 //

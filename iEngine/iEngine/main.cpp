@@ -1,3 +1,10 @@
+//  IEngine.h
+//  iEngine
+//
+//  Created by Srisaiyeegharan Kidnapillai on 5/4/16.
+//  Copyright © 2016 Isuru Kusumal Rajapakse. All rights reserved.
+//
+
 #include <iostream>
 #include <fstream>
 #include "Predicate.h"

@@ -1,4 +1,3 @@
-//
 //  Predicate.h
 //  iEngine
 //
