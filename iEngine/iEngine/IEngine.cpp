@@ -107,19 +107,14 @@ bool IEngine::evaluateUsingTruthTable(Variable aAsked)
                 //string test = typeid(fPredicates[i]).name();
                 auto* cp = dynamic_cast<CompoundPredicate *>(fPredicates[i]);
                 if( cp==NULL )
-                {
                     result = evaluvatePredicate(*fPredicates[i], mapKeyValues(fPredicates[i],*truth,j,i));
-                }
                 else
-                {
-                    
                     result = evaluvateCompundPredicate(*cp, mapCompoundKeyValues(*cp,*truth,j,i));
-                }
                 truth->data()[i][j] = result;
             }
         }
     }
-    cout << *truth;
+    //cout << *truth;
     return truth->isInKnowledgeBase(aAsked);
 }
 
@@ -132,7 +127,8 @@ bool IEngine::process(Method aMethod, Variable aAsked)
             result = evaluateUsingTruthTable(aAsked);
             break;
         default:
-            result =  evaluateUsingTruthTable(aAsked); //Defaults to TT
+            //Defaults to TT
+            result = evaluateUsingTruthTable(aAsked);
             break;
     }
     return result;

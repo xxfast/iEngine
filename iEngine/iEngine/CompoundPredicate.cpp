@@ -48,6 +48,14 @@ vector<Predicate>& CompoundPredicate::getPredicates() const
     return lPredicates;
 }
 
+vector<Variable>& CompoundPredicate::getVariables() const
+{
+    vector<Variable>* temp = new vector<Variable>;
+    temp->insert(temp->end(), fLVal.getVariables().begin(), fLVal.getVariables().end());
+    temp->insert(temp->end(), fRVal.getVariables().begin(), fRVal.getVariables().end());
+    return *temp;
+}
+
 Predicate& CompoundPredicate::getLeft() const
 {
     return (Predicate&)fLVal;

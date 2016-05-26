@@ -30,6 +30,7 @@ public:
     Predicate& getLeft() const;
     Predicate& getRight() const;
     vector<Predicate>& getPredicates() const;
+    vector<Variable>& getVariables() const;
     
     // MARK: Friends
     friend ostream& operator<<(ostream& aOStream ,CompoundPredicate& aCompoundPredicate);

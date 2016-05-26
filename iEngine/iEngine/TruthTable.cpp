@@ -76,6 +76,10 @@ vector<vector<bool>>& TruthTable::data()
 
 bool TruthTable::isInKnowledgeBase(Variable aAsked)
 {
+    for (int i=0; i<fNColumns; i++)
+    {
+        
+    }
     return true;
 }
 
