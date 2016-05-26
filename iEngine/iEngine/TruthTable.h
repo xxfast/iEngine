@@ -35,7 +35,6 @@ public:
     vector<bool>& operator[] (Variable aVariable);
     vector<vector<bool>>& data();
     vector<bool> generateKnowledge(vector<Predicate*> aAskedVectorOfPredicates);
-    bool isInKnowledgeBase(Variable aAsked);
     
     // MARK: Getters
     int getRows() const;

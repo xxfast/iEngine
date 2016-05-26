@@ -60,8 +60,10 @@ TruthTable::TruthTable(vector<Predicate*>& aListOfPredicates, vector<Variable>& 
             }
         }
     }
+    
 }
 
+// Colomn selector
 vector<bool>& TruthTable::operator[] (Predicate aPredicate)
 {
     for(int i=0;i<fPredicates.size();i++)
@@ -74,6 +76,7 @@ vector<bool>& TruthTable::operator[] (Predicate aPredicate)
     throw domain_error("Predicate requested from the truth table is not found");
 }
 
+// Colomn selector via variables
 vector<bool>& TruthTable::operator[] (Variable aVariable)
 {
     for(int i=0;i<fPredicates.size();i++)
@@ -89,11 +92,13 @@ vector<bool>& TruthTable::operator[] (Variable aVariable)
     throw domain_error("Predicate requested from the truth table is not found");
 }
 
+// Table Access
 vector<vector<bool>>& TruthTable::data()
 {
     return fValues;
 }
 
+// Generate the knowledgebase from the truthtable
 vector<bool> TruthTable::generateKnowledge(vector<Predicate*> aAskedVectorOfPredicates)
 {
     for(int i=0;i<fNColumns;i++)
@@ -135,41 +140,19 @@ vector<bool> TruthTable::generateKnowledge(vector<Predicate*> aAskedVectorOfPred
     return fKnowledge;
 }
 
-bool TruthTable::isInKnowledgeBase(Variable aAsked)
-{
-    int askedIndex = 0;
-    
-    for (int i=0; i<fNColumns; i++)
-        if(fPredicates[i]->isLiteral())
-            if(fPredicates[i]->getLiteral()==aAsked)
-                askedIndex=i;
-    
-    for (int i=0; i<fNColumns; i++)
-    {
-        if(fPredicates[i]->isLiteral())
-        {
-            for (int j=0; j<fNColumns; j++)
-            {
-                if(fValues[askedIndex][j]==1)
-                {
-                    
-                }
-            }
-        }
-    }
-    return true;
-}
-
+// Gets the number of rows
 int TruthTable::getRows() const
 {
     return fNRows;
 }
 
+// Gets the number of cols
 int TruthTable::getCols() const
 {
     return fNColumns;
 }
 
+// Gets the the index of a given predicate
 int TruthTable::indexOf(Predicate* aPredicate) const
 {
     for(int i=0; i<fPredicates.size();i++)
@@ -191,6 +174,7 @@ int TruthTable::indexOf(Predicate* aPredicate) const
     return -1;
 }
 
+// Gets the the index of a given Variable
 int TruthTable::indexOfVariable(Variable aVariable) const
 {
     for(int i=0; i<fPredicates.size();i++)
@@ -206,6 +190,7 @@ int TruthTable::indexOfVariable(Variable aVariable) const
     return -1;
 }
 
+// Truthtable printer
 ostream& operator<<(ostream& aOutput, TruthTable& aTruthTable)
 {
     for(int i=0;i<aTruthTable.fNColumns;i++)

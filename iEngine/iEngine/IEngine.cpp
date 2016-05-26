@@ -34,6 +34,7 @@ IEngine::~IEngine()
 {
 }
 
+// IEngine evaluvates a predicate from given keyvalue pairs
 bool IEngine::evaluvatePredicate(Predicate aPredicate, map<Variable, bool> aKeyValues)
 {
 	//Evaluate the Given Predicate
@@ -57,6 +58,7 @@ bool IEngine::evaluvatePredicate(Predicate aPredicate, map<Variable, bool> aKeyV
 	return result;
 }
 
+// IEngine evaluvates a compound predicate from given keyvalue pairs
 bool IEngine::evaluvateCompundPredicate(CompoundPredicate aCompoundPredicate, map<Variable, bool> aKeyValues)
 {
     //Evaluate the Given Compund Predicate
@@ -68,7 +70,7 @@ bool IEngine::evaluvateCompundPredicate(CompoundPredicate aCompoundPredicate, ma
     return answer;
 }
 
-
+// Chekcs if the variable is already mapped
 bool IEngine::alreadyMapped(Variable aVariable)
 {
     for(int i=0;i<fVariables.size();i++)
@@ -78,6 +80,7 @@ bool IEngine::alreadyMapped(Variable aVariable)
     return false;
 }
 
+// Maps the predicates to a given key values
 map<Variable,bool>& IEngine::mapKeyValues(Predicate* aPredicate, TruthTable& truth, int indexToFetch, int indexToStore)
 {
     map<Variable,bool>& lKeyValues = *new map<Variable,bool>();
@@ -92,6 +95,7 @@ map<Variable,bool>& IEngine::mapKeyValues(Predicate* aPredicate, TruthTable& tru
     return lKeyValues ;
 }
 
+// Maps the compound predicates to a given key values
 map<Variable,bool>& IEngine::mapCompoundKeyValues(CompoundPredicate& aCompoundPredicate, TruthTable& truth, int indexToFetch, int indexToStore)
 {
     Predicate* leftPredicate = &aCompoundPredicate.getLeft();
@@ -102,6 +106,7 @@ map<Variable,bool>& IEngine::mapCompoundKeyValues(CompoundPredicate& aCompoundPr
     return LeftKeyValues;
 }
 
+// evaluvate the knowledge base using Forward Chaining
 bool IEngine::evaluateUsingFC(Variable aAsked)
 {
     ForwardChaining FC = ForwardChaining(fPredicates);
@@ -115,6 +120,7 @@ bool IEngine::evaluateUsingFC(Variable aAsked)
     return result;
 }
 
+// evaluvate the knowledge base using Backward Chaining
 bool IEngine::evaluateUsingBC(Variable aAsked)
 {
     BackwardChaining BC = BackwardChaining(fPredicates);
@@ -128,6 +134,7 @@ bool IEngine::evaluateUsingBC(Variable aAsked)
     return result;
 }
 
+// evaluvate the knowledge base using Truth Tables
 bool IEngine::evaluateUsingTruthTable(Variable aAsked)
 {
     // Translate the predicates into a truth table
@@ -175,6 +182,7 @@ bool IEngine::evaluateUsingTruthTable(Variable aAsked)
     return rowAllTrue;
 }
 
+// Determine truth using the given method
 bool IEngine::process(Method aMethod, Variable aAsked)
 {
     bool result;
@@ -196,6 +204,8 @@ bool IEngine::process(Method aMethod, Variable aAsked)
     }
     return result;
 }
+
+// Get results from if the method generated results
 string IEngine::getResults() const
 {
     return fResults;
