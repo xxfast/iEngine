@@ -158,6 +158,11 @@ vector<Predicate*>  Utilities::generatePredicates(ifstream& aInput)
         getline(aInput, input, '\n');
         stringPredicates = splice(input, ';');
     }
+	
+	for (int i = 0; i < stringPredicates.size(); i++)
+	{
+		stringPredicates[i] = stripSpaces(stringPredicates[i]);
+	}
     
     for (int i = 0; i < stringPredicates.size(); i++)
     {
