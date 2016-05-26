@@ -41,7 +41,7 @@ Connective Utilities::stringToConnective(string aString)
 	if (aString == "=>") result = IMPLY;
 	else if (aString == "<=>") result = EQU;
 	else if (aString == "~") result = NOT;
-	else if (aString == "^") result = AND;
+	else if (aString == "&") result = AND;
 	else result = OR;
 
 	return result;
@@ -169,7 +169,7 @@ vector<Predicate*>  Utilities::generatePredicates(ifstream& aInput)
 
 string Utilities::stripSpaces(string input)
 {
-	input.erase(remove_if(input.begin(), input.end(), isspace), input.end());
+    input.erase(remove_if(input.begin(), input.end(), ::isspace), input.end());
 	return input;
 }
 

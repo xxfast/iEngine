@@ -2,7 +2,7 @@
 //  iEngine
 //
 //  Created by Isuru Kusumal Rajapakse And Sri Srisaiyeegharan Kidnapillai on 5/4/16.
-//  Copyright © 2016 Isuru Kusumal Rajapakse. All rights reserved.
+//  Copyright ï¿½ 2016 Isuru Kusumal Rajapakse. All rights reserved.
 //
 
 #include "IEngine.h"
@@ -16,7 +16,13 @@ IEngine::IEngine(vector<Predicate*> aPredicates)
    
     for(int i=(int)aPredicates.size()-1;i>=0;i--)
     {
-        vector<Variable> temp = aPredicates[i]->getVariables();
+        auto* cp = dynamic_cast<CompoundPredicate *>(fPredicates[i]);
+        vector<Variable> temp;
+        if(cp==NULL)
+            temp = fPredicates[i]->getVariables();
+        else
+            temp = cp->getVariables();
+        
         for(int i=0;i<temp.size();i++)
             if(!alreadyMapped(temp[i]))
                 fVariables.push_back(temp[i]);
@@ -107,11 +113,7 @@ bool IEngine::evaluateUsingTruthTable(Variable aAsked)
         {
             for(int j=0;j< truth->getRows(); j++)
             {
-                //map<Variable,bool> lKeyValues;
-                //lKeyValues[fPredicates[i].getLeft()]=truth->operator[](fPredicates[i].getLeft())[j];
-                //lKeyValues[fPredicates[i].getRight()]=truth->operator[](fPredicates[i].getRight())[j];
                 bool result;
-                //string test = typeid(fPredicates[i]).name();
                 auto* cp = dynamic_cast<CompoundPredicate *>(fPredicates[i]);
                 if( cp==NULL )
                     result = evaluvatePredicate(*fPredicates[i], mapKeyValues(fPredicates[i],*truth,j,i));
