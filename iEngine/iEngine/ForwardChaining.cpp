@@ -1,3 +1,4 @@
+//
 //  ForwardChaining.cpp
 //  iEngine
 //
@@ -11,47 +12,79 @@ ForwardChaining::ForwardChaining()
 
 }
 
-ForwardChaining::ForwardChaining(vector<Predicate> aPredicates)
+ForwardChaining::ForwardChaining(vector<Predicate*> aPredicates)
 {
-	Predicate lPredicate = aPredicates.back();
-	aPredicates.pop_back();
-	while (!aPredicates.empty())
+
+	for (int i = 0; i < aPredicates.size(); i++)
 	{
-		if (lPredicate.isLiteral())
-		{
-			fAgenda.push_back(lPredicate);
-		}
+		if (aPredicates[i]->isLiteral())
+			fAgenda.push(aPredicates[i]->getLeft());
 		else
 		{
-			if (lPredicate.isHorn())
+			HornRecord lHorn;
+			if (aPredicates[i]->isHorn())
 			{
-				/*fHorn[lPredicate] = lPredicate.getPredicatesCount();*/ // unimplemented method
+				auto test1 = dynamic_cast<CompoundPredicate*>(aPredicates[i]);
+				auto* lPredicate = dynamic_cast<CompoundPredicate *>(aPredicates[i]);
+				if (lPredicate != NULL)
+				{
+					lHorn.fPredicate = lPredicate;
+					lHorn.fCount = lPredicate->getLeft().getVariables().size();
+					fHorns.push_back(lHorn);
+
+				}
+				else
+				{
+					lHorn.fPredicate = aPredicates[i];
+					lHorn.fCount = 1;
+					fHorns.push_back(lHorn);
+				}
 			}
 		}
-
 	}
-
 }
 
-vector<Predicate> ForwardChaining::evaluate(map<Predicate, int> aHorn)
+queue<Variable> ForwardChaining::evaluate(Variable aVariableAsked)
 {
-	fInferred.push_back(fAgenda.back());
-	fAgenda.pop_back();
-
+	//loop through all the Predicates , and check the count if 0 push it to agenda, and check if its matching
 	while (!fAgenda.empty())
 	{
-		fInferred.push_back(fAgenda.back());
-		fAgenda.pop_back();
-		//for (auto& key : aHorn)
-		//{
-		//	if (key.first.getLeft() == fInferred.back().getLiteral())
-		//	{
-		//		key.second--;
-		//		if (key.second == 0)
-		//			fAgenda.push_back(key.first.getRight());
-		//	}
-		//}
+		fInferred.push(fAgenda.front());
+		fAgenda.pop();
 
+		if (fInferred.back() == aVariableAsked)
+			break;
+
+		for (int i = 0; i < fHorns.size(); i++)
+		{
+
+			auto* lPredicate = dynamic_cast<CompoundPredicate *>(fHorns[i].fPredicate);
+
+			if (lPredicate != NULL) //Compound Predicate
+			{
+				if (lPredicate->getLeft().getLeft() == fInferred.back())
+				{
+					fHorns[i].fCount--;
+					if (fHorns[i].fCount == 0)
+						fAgenda.push(lPredicate->getRight().getLeft());
+				}
+				else if (lPredicate->getLeft().getRight() == fInferred.back())
+				{
+					fHorns[i].fCount--;
+					if (fHorns[i].fCount == 0)
+						fAgenda.push(lPredicate->getRight().getLeft());
+				}
+			}
+			else // Normal Predicate
+			{
+				if (fHorns[i].fPredicate->getLeft() == fInferred.back())
+				{
+					fHorns[i].fCount--;
+					if (fHorns[i].fCount == 0)
+						fAgenda.push((fHorns[i].fPredicate->getRight()));
+				}
+			}
+		}
 	}
 	return fInferred;
 }
