@@ -45,32 +45,79 @@ Connective Utilities::stringToConnective(string aString)
 	return result;
 }
 
-Predicate Utilities::stringToPredicate(string aString)
+Predicate* Utilities::stringToPredicate(string aString)
 {
-    
-    Variable fLVal;
-    Variable fRVal = "";
-    Connective fConnective = NILL;
-    
-    Connective lAllPossibleConnectives[5] = {NOT,AND,OR,EQU,IMPLY};
-    
-    for (int i=0; i<5; i++)
-    {
-        string toSearch = connectiveToString(lAllPossibleConnectives[i]);
-        size_t lPosition = aString.find(toSearch);
-        if(lPosition!=string::npos)
-        {
-            fConnective = lAllPossibleConnectives[i];
-            fRVal = aString.substr(lPosition+toSearch.size(),aString.size()-lPosition+toSearch.size());
-            fLVal = aString.substr(0,aString.size()-fRVal.size()-toSearch.size());
-            break;
-        }
-    }
-    
-    if(fConnective==NILL) fLVal = aString;
-    
-    Predicate* myPredicate = new Predicate(fLVal,fRVal,fConnective);
-    return *myPredicate;
+	Variable lLVal;
+	Variable lRVal = "";
+	Connective lConnective;
+
+	// Reverse order of Evaluation
+	Connective lAllPossibleConnectives[5] = { EQU,IMPLY,OR,AND,NOT };
+
+	for (int i = 0; i<5; i++)
+	{
+		string toSearch = connectiveToString(lAllPossibleConnectives[i]);
+		size_t lPosition = aString.find(toSearch);
+		if (lPosition != string::npos)
+		{
+			lConnective = lAllPossibleConnectives[i];
+			lRVal = aString.substr(lPosition + toSearch.size(), aString.size() - lPosition + toSearch.size());
+			lLVal = aString.substr(0, aString.size() - lRVal.size() - toSearch.size());
+			break;
+		}
+	}
+
+	if (lConnective == NILL) lLVal = aString;
+	Predicate* myPredicate = new Predicate(lLVal, lRVal, lConnective);
+	return myPredicate;
+
+	Connective lConnective = NILL;
+	
+}
+
+Predicate* Utilities::compoundPredicateToPredicates(string aString)
+{
+	int lConnectiveCount = 0;
+	Connective lAllPossibleConnectives[5] = { EQU,IMPLY,OR,AND,NOT };
+
+	for (int i = 0; i < 5; i++)
+	{
+		string toSearch = connectiveToString(lAllPossibleConnectives[i]);
+		size_t lPosition = aString.find(toSearch);
+		if (lPosition != string::npos)
+		{
+			lConnectiveCount++;
+		}
+	}
+	
+	if(lConnectiveCount<=1)
+	{
+		return stringToPredicate(aString);
+	}
+	else
+	{
+		Connective lCompoundConnective;
+		Variable lLVal;
+		Variable lRVal = "";
+
+		for (int i = 0; i<5; i++)
+		{
+			string toSearch = connectiveToString(lAllPossibleConnectives[i]);
+			size_t lPosition = aString.find(toSearch);
+			if (lPosition != string::npos)
+			{
+				lCompoundConnective = lAllPossibleConnectives[i];
+				lRVal = aString.substr(lPosition + toSearch.size(), aString.size() - lPosition + toSearch.size());
+				lLVal = aString.substr(0, aString.size() - lRVal.size() - toSearch.size());
+				break;
+			}
+		}
+		Predicate* lLPredicate = stringToPredicate(lLVal);
+		Predicate* lRPredicate = stringToPredicate(lRVal);
+
+		CompoundPredicate* myCompoundPredicate = new CompoundPredicate(*lLPredicate, *lRPredicate, lCompoundConnective);
+		return myCompoundPredicate;
+	} 
 }
 
 string Utilities::connectiveToString(Connective aConnective)
@@ -99,11 +146,11 @@ Method Utilities::stringToMethod(string aString)
 	return result;
 }
 
-vector<Predicate>  Utilities::generatePredicates(ifstream& aInput)
+vector<Predicate*>  Utilities::generatePredicates(ifstream& aInput)
 {
 	vector<string> lFirstLine;
 	vector<string> lSecondLine;
-	vector<Predicate> result;
+	vector<Predicate*> result;
 	if (!aInput.good())
 	{
         throw domain_error("Bad Input");
@@ -117,45 +164,8 @@ vector<Predicate>  Utilities::generatePredicates(ifstream& aInput)
     
     for (int i = 0; i < lSecondLine.size(); i++)
     {
-        result[i] = Predicate(stringToPredicate(lSecondLine[i]));
+        result[i] = new Predicate(stringToPredicate(lSecondLine[i]));
     }
     
     return result;
 }
-
-Predicate Utilities::stringToCompoundPredicate(string aString)
-{
-
-	Variable lLVal;
-	Variable lRVal = "";
-	Variable lLCompoundLVal;
-	Variable lLCompoundRVal;
-
-	//Variable lRCompoundLVal;
-	//Variable lRCompoundRVal;
-
-	Connective fConnective = NILL;
-	Connective lCompoundConnective = NILL;
-
-
-
-	Connective lAllPossibleConnectives[5] = { NOT,AND,OR,EQU,IMPLY };
-
-	for (int i = 0; i<5; i++)
-	{
-		string toSearch = Utilities::connectiveToString(lAllPossibleConnectives[i]);
-		size_t lPosition = aString.find(toSearch);
-		if (lPosition != string::npos)
-		{
-			fConnective = lAllPossibleConnectives[i];
-			lRVal = aString.substr(lPosition + toSearch.size(), aString.size() - lPosition + toSearch.size());
-			lLVal = aString.substr(0, aString.size() - lRVal.size() - toSearch.size());
-			break;
-		}
-	}
-
-	Predicate* myCompoundPredicate = new Predicate(lLCompoundLVal, lLCompoundRVal, lCompoundConnective);
-	return *myCompoundPredicate;
-
-}
-

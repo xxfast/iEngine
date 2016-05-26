@@ -1,10 +1,18 @@
-﻿  Predicate.cpp
-  ForwardChaining.cpp
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  main.cpp
-  Utilities.cpp
+﻿  Utilities.cpp
+c:\users\sri\desktop\2nd year\ai\assignment 2\iengine\iengine\iengine\utilities.cpp(84): warning C4129: '/': unrecognized character escape sequence
+c:\users\sri\desktop\2nd year\ai\assignment 2\iengine\iengine\iengine\utilities.cpp(118): warning C4018: '<': signed/unsigned mismatch
   TruthTable.cpp
+c:\users\sri\desktop\2nd year\ai\assignment 2\iengine\iengine\iengine\truthtable.cpp(18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\sri\desktop\2nd year\ai\assignment 2\iengine\iengine\iengine\truthtable.cpp(22): warning C4018: '<': signed/unsigned mismatch
+c:\users\sri\desktop\2nd year\ai\assignment 2\iengine\iengine\iengine\truthtable.cpp(33): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\sri\desktop\2nd year\ai\assignment 2\iengine\iengine\iengine\truthtable.cpp(47): warning C4018: '<': signed/unsigned mismatch
+c:\users\sri\desktop\2nd year\ai\assignment 2\iengine\iengine\iengine\truthtable.cpp(59): warning C4018: '<': signed/unsigned mismatch
+  Predicate.cpp
+  main.cpp
   IEngine.cpp
+c:\users\sri\desktop\2nd year\ai\assignment 2\iengine\iengine\iengine\iengine.cpp(13): warning C4018: '<': signed/unsigned mismatch
+c:\users\sri\desktop\2nd year\ai\assignment 2\iengine\iengine\iengine\iengine.cpp(61): warning C4018: '<': signed/unsigned mismatch
+  ForwardChaining.cpp
   CompoundPredicate.cpp
-  iEngine.vcxproj -> D:\Swinburne\Semester3\Introduction_to_AI\MyFolder\Assignment2\TeamProject\iEngine\iEngine\Debug\iEngine.exe
+  Generating Code...
+  iEngine.vcxproj -> C:\Users\Sri\Desktop\2nd Year\AI\Assignment 2\iEngine\iEngine\Debug\iEngine.exe

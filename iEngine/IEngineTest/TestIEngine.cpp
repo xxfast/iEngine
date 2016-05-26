@@ -74,7 +74,7 @@ void TestEvaluvatePredicateWithNegation()
     map<Variable,bool> myKeyValues;
     myKeyValues["B"]=0;
     bool result = ( 1 == myEngine.evaluvatePredicate(myPredicate, myKeyValues) );
-    cout << "\t- Test Evaluvate Predicate With Negation " << ((result)?"✔︎":"✘") << endl;
+    cout << "\t- TestT Evaluvate Predicate With Negation " << ((result)?"✔︎":"✘") << endl;
 }
 
 void TestEvaluvatePredicateWithEquvelence()
