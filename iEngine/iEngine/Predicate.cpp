@@ -1,4 +1,3 @@
-//
 //  Predicate.cpp
 //  iEngine
 //

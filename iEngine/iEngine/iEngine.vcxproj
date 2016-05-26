@@ -79,6 +79,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BackwardChaining.cpp" />
     <ClCompile Include="CompoundPredicate.cpp" />
     <ClCompile Include="ForwardChaining.cpp" />
     <ClCompile Include="IEngine.cpp" />
@@ -88,6 +89,7 @@
     <ClCompile Include="Utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BackwardChaining.h" />
     <ClInclude Include="CompoundPredicate.h" />
     <ClInclude Include="ForwardChaining.h" />
     <ClInclude Include="IEngine.h" />
