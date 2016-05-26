@@ -56,4 +56,9 @@ ostream& operator<<(ostream& aOStream ,CompoundPredicate& aCompoundPredicate)
     return aOStream;
 }
 
+bool operator==(const CompoundPredicate& aLHS ,const CompoundPredicate& aRHS)
+{
+    return (aLHS.getLeft()==aRHS.getLeft()) && (aLHS.getRight()==aRHS.getRight()) && (aLHS.getConnective()==aRHS.getConnective());
+}
+
 

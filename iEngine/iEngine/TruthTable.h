@@ -23,6 +23,7 @@ private:
     // MARK: Members
     vector<Predicate*> fPredicates;
     vector<vector<bool>> fValues;
+    vector<bool> fKnowledge;
     int fNColumns;
     int fNRows;
 public:
@@ -33,11 +34,14 @@ public:
     vector<bool>& operator[] (Predicate aPredicate);
     vector<bool>& operator[] (Variable aVariable);
     vector<vector<bool>>& data();
+    vector<bool> generateKnowledge(vector<Predicate*> aAskedVectorOfPredicates);
     bool isInKnowledgeBase(Variable aAsked);
     
     // MARK: Getters
     int getRows() const;
     int getCols() const;
+    int indexOf(Predicate* aPredicate) const;
+    int indexOfVariable(Variable aVariable) const;
     
     // MARK: Friends
     friend ostream& operator<<(ostream& aOutput, TruthTable& aTruthTable);

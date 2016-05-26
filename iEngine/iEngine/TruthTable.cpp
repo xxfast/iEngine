@@ -94,11 +94,68 @@ vector<vector<bool>>& TruthTable::data()
     return fValues;
 }
 
+vector<bool> TruthTable::generateKnowledge(vector<Predicate*> aAskedVectorOfPredicates)
+{
+    for(int i=0;i<fNColumns;i++)
+    {
+        bool value = true;
+        for(int j=0;j< fNRows; j++)
+        {
+            bool found = false;
+            for(int k=0;k<fNColumns;k++)
+            {
+                for(int inkb = 0; inkb< aAskedVectorOfPredicates.size(); inkb++)
+                {
+                    auto* lcp = dynamic_cast<CompoundPredicate *>(aAskedVectorOfPredicates[inkb]);
+                    auto* rcp = dynamic_cast<CompoundPredicate *>(fPredicates[k]);
+                    if( lcp!=NULL &&  rcp!=NULL)
+                    {
+                        if(*lcp==*rcp)
+                        {
+                            value = fValues[inkb][j] && value;
+                            found = true;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if(*aAskedVectorOfPredicates[inkb]==*fPredicates[k])
+                        {
+                            value = fValues[inkb][j] && value;
+                            found = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            if(found)
+                fKnowledge.push_back(value);
+        }
+    }
+    return fKnowledge;
+}
+
 bool TruthTable::isInKnowledgeBase(Variable aAsked)
 {
+    int askedIndex = 0;
+    
+    for (int i=0; i<fNColumns; i++)
+        if(fPredicates[i]->isLiteral())
+            if(fPredicates[i]->getLiteral()==aAsked)
+                askedIndex=i;
+    
     for (int i=0; i<fNColumns; i++)
     {
-        
+        if(fPredicates[i]->isLiteral())
+        {
+            for (int j=0; j<fNColumns; j++)
+            {
+                if(fValues[askedIndex][j]==1)
+                {
+                    
+                }
+            }
+        }
     }
     return true;
 }
@@ -111,6 +168,42 @@ int TruthTable::getRows() const
 int TruthTable::getCols() const
 {
     return fNColumns;
+}
+
+int TruthTable::indexOf(Predicate* aPredicate) const
+{
+    for(int i=0; i<fPredicates.size();i++)
+    {
+        auto* lcp = dynamic_cast<CompoundPredicate *>(aPredicate);
+        auto* rcp = dynamic_cast<CompoundPredicate *>(fPredicates[i]);
+        
+        if( lcp!=NULL && rcp!=NULL)
+        {
+            if(*lcp==*rcp)
+                return i;
+        }
+        else
+        {
+            if(*aPredicate==*fPredicates[i])
+                return i;
+        }
+    }
+    return -1;
+}
+
+int TruthTable::indexOfVariable(Variable aVariable) const
+{
+    for(int i=0; i<fPredicates.size();i++)
+    {
+        if(fPredicates[i]->isLiteral())
+        {
+            if(fPredicates[i]->getLiteral()==aVariable)
+            {
+                return i;
+            }
+        }
+    }
+    return -1;
 }
 
 ostream& operator<<(ostream& aOutput, TruthTable& aTruthTable)

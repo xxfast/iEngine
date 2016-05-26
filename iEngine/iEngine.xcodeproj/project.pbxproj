@@ -24,6 +24,13 @@
 		D3A637041CEC8215001B7824 /* TruthTable.h in Sources */ = {isa = PBXBuildFile; fileRef = D382DFAC1CE4721D00BD79C9 /* TruthTable.h */; };
 		D3A637061CEC823A001B7824 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D382DFC81CE499A800BD79C9 /* main.cpp */; };
 		D3A6370F1CEC9D51001B7824 /* TruthTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D382DFAB1CE4721D00BD79C9 /* TruthTable.cpp */; };
+		D3FC121F1CF735B100022CC0 /* ForwardChaining.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D3FC121C1CF735B100022CC0 /* ForwardChaining.cpp */; };
+		D3FC12201CF735B100022CC0 /* BackwardChaining.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D3FC121E1CF735B100022CC0 /* BackwardChaining.cpp */; };
+		D3FC12221CF749BE00022CC0 /* ForwardChaining.h in Sources */ = {isa = PBXBuildFile; fileRef = D3FC121B1CF735B100022CC0 /* ForwardChaining.h */; };
+		D3FC12231CF749BE00022CC0 /* ForwardChaining.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D3FC121C1CF735B100022CC0 /* ForwardChaining.cpp */; };
+		D3FC12241CF749BE00022CC0 /* BackwardChaining.h in Sources */ = {isa = PBXBuildFile; fileRef = D3FC121D1CF735B100022CC0 /* BackwardChaining.h */; };
+		D3FC12251CF749BE00022CC0 /* HornRecord.h in Sources */ = {isa = PBXBuildFile; fileRef = D3FC12211CF73D4F00022CC0 /* HornRecord.h */; };
+		D3FC12261CF749BE00022CC0 /* BackwardChaining.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D3FC121E1CF735B100022CC0 /* BackwardChaining.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -68,6 +75,11 @@
 		D3A637091CEC91D7001B7824 /* TestIEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestIEngine.cpp; sourceTree = "<group>"; };
 		D3A6370B1CEC9202001B7824 /* TestTruthTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestTruthTable.cpp; sourceTree = "<group>"; };
 		D3A6370D1CEC9228001B7824 /* TestPredicate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestPredicate.cpp; sourceTree = "<group>"; };
+		D3FC121B1CF735B100022CC0 /* ForwardChaining.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForwardChaining.h; sourceTree = "<group>"; };
+		D3FC121C1CF735B100022CC0 /* ForwardChaining.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ForwardChaining.cpp; sourceTree = "<group>"; };
+		D3FC121D1CF735B100022CC0 /* BackwardChaining.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackwardChaining.h; sourceTree = "<group>"; };
+		D3FC121E1CF735B100022CC0 /* BackwardChaining.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BackwardChaining.cpp; sourceTree = "<group>"; };
+		D3FC12211CF73D4F00022CC0 /* HornRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HornRecord.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +121,11 @@
 		D353C9121CD99631004963A1 /* iEngine */ = {
 			isa = PBXGroup;
 			children = (
+				D3FC121B1CF735B100022CC0 /* ForwardChaining.h */,
+				D3FC121C1CF735B100022CC0 /* ForwardChaining.cpp */,
+				D3FC121D1CF735B100022CC0 /* BackwardChaining.h */,
+				D3FC12211CF73D4F00022CC0 /* HornRecord.h */,
+				D3FC121E1CF735B100022CC0 /* BackwardChaining.cpp */,
 				D31364861CE0891C00EA8E5D /* IEngine.h */,
 				D31364871CE0891C00EA8E5D /* IEngine.cpp */,
 				D353C9271CD9BB97004963A1 /* test.txt */,
@@ -217,7 +234,9 @@
 				D353C9141CD99631004963A1 /* main.cpp in Sources */,
 				D382DFAD1CE4721D00BD79C9 /* TruthTable.cpp in Sources */,
 				D30D79B11CF370B300BEB836 /* CompoundPredicate.cpp in Sources */,
+				D3FC121F1CF735B100022CC0 /* ForwardChaining.cpp in Sources */,
 				D353C91D1CD99F78004963A1 /* Predicate.cpp in Sources */,
+				D3FC12201CF735B100022CC0 /* BackwardChaining.cpp in Sources */,
 				D353C9231CD9A9A1004963A1 /* Utilities.cpp in Sources */,
 				D31364881CE0891C00EA8E5D /* IEngine.cpp in Sources */,
 			);
@@ -227,6 +246,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3FC12221CF749BE00022CC0 /* ForwardChaining.h in Sources */,
+				D3FC12231CF749BE00022CC0 /* ForwardChaining.cpp in Sources */,
+				D3FC12241CF749BE00022CC0 /* BackwardChaining.h in Sources */,
+				D3FC12251CF749BE00022CC0 /* HornRecord.h in Sources */,
+				D3FC12261CF749BE00022CC0 /* BackwardChaining.cpp in Sources */,
 				D30D79B51CF56A9A00BEB836 /* CompoundPredicate.h in Sources */,
 				D30D79B61CF56A9A00BEB836 /* CompoundPredicate.cpp in Sources */,
 				D3A6370F1CEC9D51001B7824 /* TruthTable.cpp in Sources */,
