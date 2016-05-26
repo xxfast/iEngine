@@ -31,8 +31,12 @@ vector<Predicate>& CompoundPredicate::getPredicates() const
 vector<Variable>& CompoundPredicate::getVariables() const
 {
     vector<Variable>* temp = new vector<Variable>;
-    temp->insert(temp->end(), fLVal.getVariables().begin(), fLVal.getVariables().end());
-    temp->insert(temp->end(), fRVal.getVariables().begin(), fRVal.getVariables().end());
+    vector<Variable> leftVariables = fLVal.getVariables();
+    vector<Variable> rightVariables = fRVal.getVariables();
+    for(int i=0;i<leftVariables.size();i++)
+        temp->push_back(leftVariables[i]);
+    for(int i=0;i<rightVariables.size();i++)
+        temp->push_back(rightVariables[i]);
     return *temp;
 }
 

@@ -38,7 +38,7 @@ Connective Utilities::stringToConnective(string aString)
 	if (aString == "=>") result = IMPLY;
 	else if (aString == "<=>") result = EQU;
 	else if (aString == "~") result = NOT;
-	else if (aString == "^") result = AND;
+	else if (aString == "&") result = AND;
 	else result = OR;
 
 	return result;
