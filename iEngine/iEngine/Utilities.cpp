@@ -123,7 +123,7 @@ string Utilities::connectiveToString(Connective aConnective)
 	if (aConnective == IMPLY)result = "=>";
 	else if (aConnective == EQU)result = "<=>";
 	else if (aConnective == NOT)result = "~";
-	else if (aConnective == AND)result = "^";
+	else if (aConnective == AND)result = "&";
 	else if (aConnective == OR)result = "\/";
 	return result;
 }
@@ -158,7 +158,7 @@ vector<Predicate*>  Utilities::generatePredicates(ifstream& aInput)
     
     for (int i = 0; i < stringPredicates.size(); i++)
     {
-        result.push_back(new Predicate(*stringToPredicate(stringPredicates[i])));
+        result.push_back(stringToCompoundPredicates(stringPredicates[i]));
     }
     
     return result;
