@@ -29,19 +29,15 @@ ForwardChaining::ForwardChaining(vector<Predicate*> aPredicates)
 				if (lPredicate != NULL)
 				{
 					lHorn.fPredicate = lPredicate;
-					lHorn.fCount = fHorns[i].fCount = lPredicate->getLeft().getVariables().size();
+					lHorn.fCount = lPredicate->getLeft().getVariables().size();
 					fHorns.push_back(lHorn);
-					/*
-					fHorns[i].fPredicate = lPredicate;
-					fHorns[i].fCount = lPredicate->getLeft().getVariables().size();*/
+
 				}
 				else
 				{
 					lHorn.fPredicate = aPredicates[i];
 					lHorn.fCount = 1;
 					fHorns.push_back(lHorn);
-					//fHorns[i].fPredicate = aPredicates[i];
-					//fHorns[i].fCount = 1;
 				}
 			}
 		}
@@ -56,7 +52,7 @@ queue<Variable> ForwardChaining::evaluate(Variable aVariableAsked)
 		fInferred.push(fAgenda.front());
 		fAgenda.pop();
 
-		if (fInferred.front() == aVariableAsked) // do we compare pointer or?
+		if (fInferred.back() == aVariableAsked)
 			break;
 
 		for (int i = 0; i < fHorns.size(); i++)
@@ -70,13 +66,13 @@ queue<Variable> ForwardChaining::evaluate(Variable aVariableAsked)
 				{
 					fHorns[i].fCount--;
 					if (fHorns[i].fCount == 0)
-						fAgenda.push(lPredicate->getLeft().getLeft());
+						fAgenda.push(lPredicate->getRight().getLeft());
 				}
 				else if (lPredicate->getLeft().getRight() == fInferred.back())
 				{
 					fHorns[i].fCount--;
 					if (fHorns[i].fCount == 0)
-						fAgenda.push(lPredicate->getLeft().getRight());
+						fAgenda.push(lPredicate->getRight().getLeft());
 				}
 			}
 			else // Normal Predicate
@@ -85,7 +81,7 @@ queue<Variable> ForwardChaining::evaluate(Variable aVariableAsked)
 				{
 					fHorns[i].fCount--;
 					if (fHorns[i].fCount == 0)
-						fAgenda.push((fHorns[i].fPredicate->getLeft()));
+						fAgenda.push((fHorns[i].fPredicate->getRight()));
 				}
 			}
 		}

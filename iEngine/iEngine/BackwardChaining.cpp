@@ -54,7 +54,7 @@ vector<Variable> BackwardChaining::evaluate(Variable aVariableAsked)
 				{
 					fHorns[i].fCount--;
 					if (fHorns[i].fCount == 0)
-						fAgenda.push_back((fHorns[i].fPredicate->getRight()));
+						fAgenda.push_back((fHorns[i].fPredicate->getLeft()));
 				}
 			}
 		}

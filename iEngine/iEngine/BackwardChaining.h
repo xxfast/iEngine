@@ -1,14 +1,8 @@
+#pragma once
 #include "Utilities.h"
 #include "Predicate.h"
 #include "IEngine.h"
-
-
-#pragma once
-struct HornRecord
-{
-	Predicate* fPredicate;
-	int fCount;
-};
+#include "ForwardChaining.h"
 
 class BackwardChaining
 {
