@@ -113,11 +113,7 @@ bool IEngine::evaluateUsingTruthTable(Variable aAsked)
         {
             for(int j=0;j< truth->getRows(); j++)
             {
-                //map<Variable,bool> lKeyValues;
-                //lKeyValues[fPredicates[i].getLeft()]=truth->operator[](fPredicates[i].getLeft())[j];
-                //lKeyValues[fPredicates[i].getRight()]=truth->operator[](fPredicates[i].getRight())[j];
                 bool result;
-                //string test = typeid(fPredicates[i]).name();
                 auto* cp = dynamic_cast<CompoundPredicate *>(fPredicates[i]);
                 if( cp==NULL )
                     result = evaluvatePredicate(*fPredicates[i], mapKeyValues(fPredicates[i],*truth,j,i));

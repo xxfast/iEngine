@@ -22,8 +22,8 @@ Predicate::Predicate()
 
 Predicate::Predicate(Variable aLeftVariable, Variable aRightVariable, Connective aConnective)
 {
-    fLVal = aLeftVariable;
-    fRVal = aRightVariable;
+    fLVal = Utilities::stripSpaces(aLeftVariable);
+    fRVal = Utilities::stripSpaces(aRightVariable);
     fConnective = aConnective;
 }
 

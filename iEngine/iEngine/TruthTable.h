@@ -13,6 +13,7 @@
 #include <math.h>
 #include <iomanip>
 #include "Predicate.h"
+#include "CompoundPredicate.h"
 
 using namespace std;
 

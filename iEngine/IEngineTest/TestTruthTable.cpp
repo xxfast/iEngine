@@ -16,12 +16,12 @@ void TestTruthTable()
 {
     cout << "Testing TruthTable" <<endl;
     
-    Predicate p1 (Utilities::stringToPredicate("A^B=>D"));
-    Predicate p2 (Utilities::stringToPredicate("B^C"));
-    Predicate p3 (Utilities::stringToPredicate("A"));
-    Predicate p4 (Utilities::stringToPredicate("B"));
-    Predicate p5 (Utilities::stringToPredicate("C"));
-    Predicate p6 (Utilities::stringToPredicate("D"));
+    Predicate p1 (*Utilities::stringToCompoundPredicates("A&B=>D"));
+    Predicate p2 (*Utilities::stringToCompoundPredicates("B&C"));
+    Predicate p3 (*Utilities::stringToCompoundPredicates("A"));
+    Predicate p4 (*Utilities::stringToCompoundPredicates("B"));
+    Predicate p5 (*Utilities::stringToCompoundPredicates("C"));
+    Predicate p6 (*Utilities::stringToCompoundPredicates("D"));
     
     vector<Predicate*> myPredicates ;
     myPredicates.push_back(&p1);
@@ -38,8 +38,6 @@ void TestTruthTable()
     myVariables.push_back("D");
     
     TruthTable myTruthTable (myPredicates,myVariables);
-    
-    cout << myTruthTable;
     
     bool result = (1==1);
     cout << "\t- Testing TruthTable " << ((result)?"✔︎":"✘") << endl;

@@ -169,7 +169,7 @@ vector<Predicate*>  Utilities::generatePredicates(ifstream& aInput)
 
 string Utilities::stripSpaces(string input)
 {
-	input.erase(remove_if(input.begin(), input.end(), isspace), input.end());
+    input.erase(remove_if(input.begin(), input.end(), ::isspace), input.end());
 	return input;
 }
 
