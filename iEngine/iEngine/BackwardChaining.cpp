@@ -1,3 +1,9 @@
+﻿//  BackwardChaining.cpp
+//  iEngine
+//
+//  Created by Srisaiyeegharan Kidnapillai Ian Adrian Wisata on 5/20/16.
+//  Copyright � 2016 Isuru Kusumal Rajapakse. All rights reserved.
+//
 #include "BackwardChaining.h"
 
 BackwardChaining::BackwardChaining()
