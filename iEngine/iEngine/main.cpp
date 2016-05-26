@@ -43,14 +43,22 @@ int main(int argc, char* argv[])
 		return 2;
 	}
     
-	cout << "iEngine Driver Program" << endl;
+    
+    cout << "iEngine Driver Program" << endl;
+    
+    Method lMethod = TT;
+    if(argc>=2)
+        lMethod = Utilities::stringToMethod(argv[2]);
+    else
+        cout << "Method not specified, defaults to TT" << endl;
     
     vector<Predicate*> lPredicates = Utilities::generatePredicates(lInput);
     
     // Instatiate iEngine on the Heap
     IEngine* testEngine = new IEngine(lPredicates);
-    cout << testEngine->process(Method::TT, "P") <<endl;
-    
+    bool success = testEngine->process(lMethod, "d");
+    string output;
+    cout << ((success)?"YES":"NO")<< output<<": "<< testEngine->getResults()<<endl;
     
     //Exit the program
     lInput.close();

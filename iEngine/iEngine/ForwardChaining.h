@@ -3,23 +3,15 @@
 //  iEngine
 //
 //  Created by Ian Adrian Wisata on 5/25/16.
-//  Copyright © 2016 Ian Adrian Wisata. All rights reserved.
+//  Copyright ï¿½ 2016 Ian Adrian Wisata. All rights reserved.
 //
 
 #pragma once
-#include "Utilities.h"
-#include "Predicate.h"
-#include "IEngine.h"
 #include <vector>
 #include <queue>
+#include "HornRecord.h"
 
 using namespace std;
-
-struct HornRecord
-{
-	Predicate* fPredicate;
-	int fCount;
-};
 
 class ForwardChaining
 {

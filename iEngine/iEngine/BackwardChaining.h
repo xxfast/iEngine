@@ -1,8 +1,7 @@
 #pragma once
-#include "Utilities.h"
-#include "Predicate.h"
-#include "IEngine.h"
-#include "ForwardChaining.h"
+#include "HornRecord.h"
+#include <vector>
+#include <queue>
 
 class BackwardChaining
 {
@@ -11,7 +10,6 @@ private:
 	vector<Variable> fAgenda;
 	vector<Variable> fInferred;
 	vector<HornRecord> fHorns;
-
 
 public:
 	BackwardChaining();

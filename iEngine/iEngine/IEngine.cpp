@@ -102,11 +102,38 @@ map<Variable,bool>& IEngine::mapCompoundKeyValues(CompoundPredicate& aCompoundPr
     return LeftKeyValues;
 }
 
+bool IEngine::evaluateUsingFC(Variable aAsked)
+{
+    ForwardChaining FC = ForwardChaining(fPredicates);
+    queue<Variable> results = FC.evaluate(aAsked);
+    bool result = (results.back()==aAsked);
+    while(!results.empty())
+    {
+        fResults+=results.front()+((results.size()!=1)?", ":"");
+        results.pop();
+    }
+    return result;
+}
+
+bool IEngine::evaluateUsingBC(Variable aAsked)
+{
+    BackwardChaining BC = BackwardChaining(fPredicates);
+    vector<Variable> results = BC.evaluate(aAsked);
+    bool result = (results.front()==aAsked);
+    while(!results.empty())
+    {
+        fResults+=results.back()+((results.size()!=1)?", ":"");
+        results.pop_back();
+    }
+    return result;
+}
 
 bool IEngine::evaluateUsingTruthTable(Variable aAsked)
 {
-    //Translate the predicates into a truth table
+    // Translate the predicates into a truth table
     TruthTable* truth = new TruthTable(fPredicates, fVariables);
+    
+    // Calculating values
     for(int i=0;i<(int)fPredicates.size();i++)
     {
         if(!fPredicates[i]->isLiteral())
@@ -123,8 +150,29 @@ bool IEngine::evaluateUsingTruthTable(Variable aAsked)
             }
         }
     }
-    //cout << *truth;
-    return truth->isInKnowledgeBase(aAsked);
+    
+    vector<bool> KB = truth->generateKnowledge(fPredicates);
+    
+    vector<int> askedIndexes;
+    for (int i=0; i<fPredicates.size(); i++)
+    {
+        askedIndexes.push_back(truth->indexOf(fPredicates[i]));
+    }
+    
+    bool rowAllTrue = true;
+    int askedVariableIndex = truth->indexOfVariable(aAsked);
+    
+    for(int i=0;i<KB.size();i++)
+    {
+        bool truthDerived = truth->data()[askedVariableIndex][i];
+        if(KB[i]!=truthDerived)
+        {
+            rowAllTrue = false;
+            break;
+        }
+    }
+    
+    return rowAllTrue;
 }
 
 bool IEngine::process(Method aMethod, Variable aAsked)
@@ -135,6 +183,12 @@ bool IEngine::process(Method aMethod, Variable aAsked)
         case TT:
             result = evaluateUsingTruthTable(aAsked);
             break;
+        case FC:
+            result = evaluateUsingFC(aAsked);
+            break;
+        case BC:
+            result = evaluateUsingBC(aAsked);
+            break;
         default:
             //Defaults to TT
             result = evaluateUsingTruthTable(aAsked);
@@ -142,3 +196,8 @@ bool IEngine::process(Method aMethod, Variable aAsked)
     }
     return result;
 }
+string IEngine::getResults() const
+{
+    return fResults;
+}
+

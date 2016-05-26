@@ -1,7 +1,5 @@
 #include "BackwardChaining.h"
 
-
-
 BackwardChaining::BackwardChaining()
 {
 }

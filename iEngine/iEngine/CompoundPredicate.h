@@ -33,7 +33,7 @@ public:
     
     // MARK: Friends
     friend ostream& operator<<(ostream& aOStream ,CompoundPredicate& aCompoundPredicate);
-
+    friend bool operator==(const CompoundPredicate& aLHS ,const CompoundPredicate& aRHS);
 };
 
 

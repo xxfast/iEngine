@@ -118,19 +118,21 @@ void TestEvaluvatePredicate()
 
 void TestEvaluvateWithTruthTable()
 {
-    Predicate* p1 = Utilities::stringToCompoundPredicates("A&C=>B");
-    Predicate* p2 = Utilities::stringToCompoundPredicates("B&C=>A");
-    Predicate* p3 = Utilities::stringToCompoundPredicates("A&C");
+    Predicate* p1 = Utilities::stringToCompoundPredicates("A=>B");
+    Predicate* p2 = Utilities::stringToCompoundPredicates("A&C");
+    Predicate* p3 = Utilities::stringToCompoundPredicates("A");
+    Predicate* p4 = Utilities::stringToCompoundPredicates("B");
     
     vector<Predicate*> myPredicates ;
     
     myPredicates.push_back(p1);
     myPredicates.push_back(p2);
     myPredicates.push_back(p3);
+    myPredicates.push_back(p4);
     
     IEngine lIEngine (myPredicates);
-    lIEngine.process(TT, "A");
-    bool result = ( 1 == 1);
+    
+    bool result = lIEngine.process(TT, "A");
     cout << "\t- Test Evaluvate With TruthTable " << ((result)?"✔︎":"✘") << endl;
 
 }

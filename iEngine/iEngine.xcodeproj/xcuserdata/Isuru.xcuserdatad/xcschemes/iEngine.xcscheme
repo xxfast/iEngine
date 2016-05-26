@@ -66,6 +66,10 @@
             argument = "test.txt"
             isEnabled = "YES">
          </CommandLineArgument>
+         <CommandLineArgument
+            argument = "TT"
+            isEnabled = "YES">
+         </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
