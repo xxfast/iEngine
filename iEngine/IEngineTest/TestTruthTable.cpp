@@ -16,7 +16,7 @@ void TestTruthTable()
 {
     cout << "Testing TruthTable" <<endl;
     
-    Predicate p1 (Utilities::stringToPredicate("A^B"));
+    Predicate p1 (Utilities::stringToPredicate("A^B=>D"));
     Predicate p2 (Utilities::stringToPredicate("B^C"));
     Predicate p3 (Utilities::stringToPredicate("A"));
     Predicate p4 (Utilities::stringToPredicate("B"));
@@ -39,7 +39,7 @@ void TestTruthTable()
     
     TruthTable myTruthTable (myPredicates,myVariables);
     
-    //cout << myTruthTable;
+    cout << myTruthTable;
     
     bool result = (1==1);
     cout << "\t- Testing TruthTable " << ((result)?"✔︎":"✘") << endl;

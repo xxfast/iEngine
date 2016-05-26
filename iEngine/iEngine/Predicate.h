@@ -45,9 +45,6 @@ public:
     Variable getLeft() const;
     Variable getRight() const;
 	virtual Connective getConnective() const;
-
-	// Takes a string and gets the predicate count
-	int getPredicateCount(Predicate& aPredicate);
     
     // MARK: Friends
     
