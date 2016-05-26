@@ -65,23 +65,6 @@ Connective Predicate::getConnective() const
 	return fConnective;
 }
 
-int Predicate::getPredicateCount(Predicate& aPredicate)
-{
-	int lResult = 0;
-	Predicate lPredicate = aPredicate;
-	if (!aPredicate.isLiteral())
-	{
-		lResult++;
-		while (lPredicate.getLeft().size() != 1)
-		{
-			lResult++;
-			lPredicate = Utilities::stringToPredicate(aPredicate.getLeft());
-		}
-	}
-	return lResult;
-}
-
-
 ostream& operator<<(ostream& aOStream ,Predicate& aPredicate)
 {
     aOStream << aPredicate.getLeft() << Utilities::connectiveToString(aPredicate.getConnective()) << aPredicate.getRight();

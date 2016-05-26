@@ -2,7 +2,7 @@
 //  iEngine
 //
 //  Created by Srisaiyeegharan Kidnapillai on 5/4/16.
-//  Copyright © 2016 Isuru Kusumal Rajapakse. All rights reserved.
+//  Copyright ï¿½ 2016 Isuru Kusumal Rajapakse. All rights reserved.
 //
 
 #include <iostream>
@@ -45,18 +45,10 @@ int main(int argc, char* argv[])
     
 	cout << "iEngine Driver Program" << endl;
     
-    Predicate p1(Utilities::stringToPredicate("P=>E"));
-    Predicate p2(Utilities::stringToPredicate("P"));
-    Predicate p3(Utilities::stringToPredicate("E"));
-    
-    vector<Predicate*> myPredicates;
-    
-    myPredicates.push_back(&p1);
-    myPredicates.push_back(&p2);
-    myPredicates.push_back(&p3);
+    vector<Predicate*> lPredicates = Utilities::generatePredicates(lInput);
     
     // Instatiate iEngine on the Heap
-    IEngine* testEngine = new IEngine(myPredicates);
+    IEngine* testEngine = new IEngine(lPredicates);
     cout << testEngine->process(Method::TT, "P") <<endl;
     
     
