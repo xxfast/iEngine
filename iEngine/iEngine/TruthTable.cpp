@@ -38,7 +38,7 @@ TruthTable::TruthTable(vector<Predicate*>& aListOfPredicates, vector<Variable>& 
     
     //Populating the table
     fValues.resize(fNColumns);
-    int d = (int)(aListOfPredicates.size() - aListOfVariables.size()) - 1;
+    int d = (int)(fPredicates.size() - aListOfVariables.size()) - 1;
     for(int i=0;i<fPredicates.size();i++)
     {
         fValues[i].resize(fNRows);
@@ -121,7 +121,12 @@ ostream& operator<<(ostream& aOutput, TruthTable& aTruthTable)
         {
             cout << setw(2) <<aTruthTable.fValues[i][j];
         }
-        cout <<" - "<< i <<":"<< setw(4)<< *(aTruthTable.fPredicates[i]) << endl;
+        auto* cp = dynamic_cast<CompoundPredicate *>(aTruthTable.fPredicates[i]);
+        if( cp!=NULL )
+            cout <<" - "<< i <<":"<< setw(4)<< *cp << endl;
+        else
+            cout <<" - "<< i <<":"<< setw(4)<< *aTruthTable.fPredicates[i] << endl;
+            
     }
     return aOutput;
 }
