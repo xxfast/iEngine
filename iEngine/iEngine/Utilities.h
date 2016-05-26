@@ -42,8 +42,10 @@ public:
     // Takes a string and convert it to others
     static Method stringToMethod(string aString);
 
+	//convert a predicate to string
     static string predicateToString(Predicate& aPredicate);
 
+	//Remove the white spaces from a line of string
 	static string stripSpaces(string input);
 	
 };

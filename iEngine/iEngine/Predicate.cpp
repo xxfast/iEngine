@@ -11,15 +11,14 @@
 #include "Utilities.h"
 
 using namespace std;
-
-
+//Predicate constructor
 Predicate::Predicate()
 {
     fLVal="";
     fRVal="";
     fConnective=NILL;
 }
-
+//Predicate constructor
 Predicate::Predicate(Variable aLeftVariable, Variable aRightVariable, Connective aConnective)
 {
     fLVal = Utilities::stripSpaces(aLeftVariable);
@@ -27,21 +26,25 @@ Predicate::Predicate(Variable aLeftVariable, Variable aRightVariable, Connective
     fConnective = aConnective;
 }
 
+//Check whether a predicate is a Literal
 bool Predicate::isLiteral() const
 {
     return ((fConnective==NILL) || (fConnective==NOT)) && ((fRVal=="")||(fLVal==""));
 }
 
+//Check whether a predicate is horn
 bool Predicate::isHorn() const
 {
 	return (!(isLiteral()) && (fConnective == IMPLY));
 }
+
 
 Variable Predicate::getLiteral() const
 {
     return (fLVal!="")?fLVal:fRVal;
 }
 
+//Returns a vector of variables from predicate.
 vector<Variable> Predicate::getVariables() const
 {
     vector<Variable>* temp = new vector<Variable>;
@@ -50,16 +53,19 @@ vector<Variable> Predicate::getVariables() const
     return *temp;
 }
 
+//Returns the left variable of a predicate
 Variable Predicate::getLeft() const
 {
     return fLVal;
 }
 
+//Returns the right variable of a predicate
 Variable Predicate::getRight() const
 {
     return fRVal;
 }
 
+//Returns the connective of a predicate
 Connective Predicate::getConnective() const
 {
 	return fConnective;

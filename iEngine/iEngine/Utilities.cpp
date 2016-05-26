@@ -34,7 +34,7 @@ vector<string> Utilities::splice(string aString, char aDelimiter)
 	return result;
 }
 
-
+//Convert a string connective sign to a connective 
 Connective Utilities::stringToConnective(string aString)
 {
 	Connective result;
@@ -47,6 +47,7 @@ Connective Utilities::stringToConnective(string aString)
 	return result;
 }
 
+//convert a string to predicate
 Predicate* Utilities::stringToPredicate(string aString)
 {
 	Variable lLVal;
@@ -74,6 +75,7 @@ Predicate* Utilities::stringToPredicate(string aString)
 	return myPredicate;
 }
 
+//convert a string to compound predicate
 Predicate* Utilities::stringToCompoundPredicates(string aString)
 {
 	int lConnectiveCount = 0;
@@ -119,6 +121,7 @@ Predicate* Utilities::stringToCompoundPredicates(string aString)
 	} 
 }
 
+//convert connective sign to a string
 string Utilities::connectiveToString(Connective aConnective)
 {
 	string result;
@@ -131,11 +134,13 @@ string Utilities::connectiveToString(Connective aConnective)
 	return result;
 }
 
+//convert a predicate to string
 string Utilities::predicateToString(Predicate& aPredicate)
 {
     return aPredicate.getLeft()+connectiveToString(aPredicate.getConnective())+aPredicate.getRight();
 }
 
+// Takes a string and convert it to others
 Method Utilities::stringToMethod(string aString)
 {
 	Method result;
@@ -145,6 +150,9 @@ Method Utilities::stringToMethod(string aString)
 	return result;
 }
 
+// Takes an input file stream as the input
+// and and generates a vector of predicates from each the input
+// and return the vector of predicates
 vector<Predicate*>  Utilities::generatePredicates(ifstream& aInput)
 {
 	vector<string> stringPredicates;
@@ -172,6 +180,7 @@ vector<Predicate*>  Utilities::generatePredicates(ifstream& aInput)
     return result;
 }
 
+//Remove the white spaces from a line of string
 string Utilities::stripSpaces(string input)
 {
     input.erase(remove_if(input.begin(), input.end(), ::isspace), input.end());
