@@ -48,7 +48,7 @@ Predicate* Utilities::stringToPredicate(string aString)
 {
 	Variable lLVal;
 	Variable lRVal = "";
-	Connective lConnective;
+	Connective lConnective = NILL;
 
 	// Reverse order of Evaluation
 	Connective lAllPossibleConnectives[5] = { EQU,IMPLY,OR,AND,NOT };
@@ -69,12 +69,9 @@ Predicate* Utilities::stringToPredicate(string aString)
 	if (lConnective == NILL) lLVal = aString;
 	Predicate* myPredicate = new Predicate(lLVal, lRVal, lConnective);
 	return myPredicate;
-
-	Connective lConnective = NILL;
-	
 }
 
-Predicate* Utilities::compoundPredicateToPredicates(string aString)
+Predicate* Utilities::stringToCompoundPredicates(string aString)
 {
 	int lConnectiveCount = 0;
 	Connective lAllPossibleConnectives[5] = { EQU,IMPLY,OR,AND,NOT };
@@ -147,23 +144,21 @@ Method Utilities::stringToMethod(string aString)
 
 vector<Predicate*>  Utilities::generatePredicates(ifstream& aInput)
 {
-	vector<string> lFirstLine;
-	vector<string> lSecondLine;
+	vector<string> stringPredicates;
 	vector<Predicate*> result;
-	if (!aInput.good())
-	{
-        throw domain_error("Bad Input");
+    
+    string input;
+    getline(aInput, input, '\n');
+    
+    if(input=="TELL")
+    {
+        getline(aInput, input, '\n');
+        stringPredicates = splice(input, ';');
     }
     
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < stringPredicates.size(); i++)
     {
-        getline(aInput, lFirstLine[i], '\n');
-    }
-    lSecondLine = splice(lFirstLine[1], ';');
-    
-    for (int i = 0; i < lSecondLine.size(); i++)
-    {
-        result[i] = new Predicate(stringToPredicate(lSecondLine[i]));
+        result.push_back(new Predicate(*stringToPredicate(stringPredicates[i])));
     }
     
     return result;

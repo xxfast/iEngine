@@ -20,22 +20,6 @@ CompoundPredicate::~CompoundPredicate()
 {
 }
 
-int CompoundPredicate::getPredicateCount(Predicate& aPredicate)
-{
-	int lResult = 0;
-	Predicate lPredicate = aPredicate;
-	if (!aPredicate.isLiteral())
-	{
-		lResult++;
-		while (lPredicate.getLeft().size() != 1)
-		{
-			lResult++;
-			lPredicate = Utilities::stringToPredicate(aPredicate.getLeft());
-		}
-	}
-	return lResult;
-}
-
 vector<Predicate>& CompoundPredicate::getPredicates() const
 {
     vector<Predicate>& lPredicates = *new vector<Predicate>();

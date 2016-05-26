@@ -13,9 +13,30 @@ TruthTable::TruthTable(vector<Predicate*>& aListOfPredicates, vector<Variable>& 
     //Set number of columns to the size of predicates
     fPredicates = aListOfPredicates;
     
+    for(int i=0;i<aListOfVariables.size();i++)
+    {
+        bool found = false;
+        for(int j=0; j<aListOfPredicates.size();j++)
+        {
+            if(fPredicates[j]->isLiteral())
+            {
+                if(fPredicates[j]->getLiteral()==aListOfVariables[i])
+                {
+                    found = true;
+                    break;
+                }
+            }
+        }
+        if(!found)
+        {
+            fPredicates.push_back(new Predicate(aListOfVariables[i],"",NILL));
+        }
+    }
+    
     fNColumns = (int)fPredicates.size();
     fNRows = pow(2,aListOfVariables.size());
     
+    //Populating the table
     fValues.resize(fNColumns);
     int d = (int)(aListOfPredicates.size() - aListOfVariables.size()) - 1;
     for(int i=0;i<fPredicates.size();i++)
