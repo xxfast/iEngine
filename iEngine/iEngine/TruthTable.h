@@ -1,5 +1,4 @@
-//
-//  TruthTable.hpp
+//  TruthTable.h
 //  iEngine
 //
 //  Created by Isuru Kusumal Rajapakse on 5/12/16.

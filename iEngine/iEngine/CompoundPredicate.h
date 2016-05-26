@@ -1,4 +1,3 @@
-//
 //  CompoundPredicate.h
 //  iEngine
 //

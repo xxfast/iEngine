@@ -1,10 +1,31 @@
-﻿  Predicate.cpp
-  ForwardChaining.cpp
+﻿  Utilities.cpp
+d:\swinburne\semester3\introduction_to_ai\myfolder\assignment2\teamproject\iengine\iengine\iengine\utilities.cpp(48): error C2556: 'Predicate *Utilities::stringToPredicate(std::string)': overloaded function differs only by return type from 'Predicate Utilities::stringToPredicate(std::string)'
+  d:\swinburne\semester3\introduction_to_ai\myfolder\assignment2\teamproject\iengine\iengine\iengine\utilities.h(31): note: see declaration of 'Utilities::stringToPredicate'
+d:\swinburne\semester3\introduction_to_ai\myfolder\assignment2\teamproject\iengine\iengine\iengine\utilities.cpp(48): error C2040: 'Utilities::stringToPredicate': 'Predicate *(std::string)' differs in levels of indirection from 'Predicate (std::string)'
+d:\swinburne\semester3\introduction_to_ai\myfolder\assignment2\teamproject\iengine\iengine\iengine\utilities.cpp(73): error C2086: 'Connective lConnective': redefinition
+  d:\swinburne\semester3\introduction_to_ai\myfolder\assignment2\teamproject\iengine\iengine\iengine\utilities.cpp(51): note: see declaration of 'lConnective'
+d:\swinburne\semester3\introduction_to_ai\myfolder\assignment2\teamproject\iengine\iengine\iengine\utilities.cpp(77): error C2039: 'compoundPredicateToPredicates': is not a member of 'Utilities'
+  d:\swinburne\semester3\introduction_to_ai\myfolder\assignment2\teamproject\iengine\iengine\iengine\utilities.h(19): note: see declaration of 'Utilities'
+d:\swinburne\semester3\introduction_to_ai\myfolder\assignment2\teamproject\iengine\iengine\iengine\utilities.cpp(84): error C3861: 'connectiveToString': identifier not found
+d:\swinburne\semester3\introduction_to_ai\myfolder\assignment2\teamproject\iengine\iengine\iengine\utilities.cpp(94): error C3861: 'stringToPredicate': identifier not found
+d:\swinburne\semester3\introduction_to_ai\myfolder\assignment2\teamproject\iengine\iengine\iengine\utilities.cpp(104): error C3861: 'connectiveToString': identifier not found
+d:\swinburne\semester3\introduction_to_ai\myfolder\assignment2\teamproject\iengine\iengine\iengine\utilities.cpp(114): error C3861: 'stringToPredicate': identifier not found
+d:\swinburne\semester3\introduction_to_ai\myfolder\assignment2\teamproject\iengine\iengine\iengine\utilities.cpp(115): error C3861: 'stringToPredicate': identifier not found
+d:\swinburne\semester3\introduction_to_ai\myfolder\assignment2\teamproject\iengine\iengine\iengine\utilities.cpp(130): warning C4129: '/': unrecognized character escape sequence
+d:\swinburne\semester3\introduction_to_ai\myfolder\assignment2\teamproject\iengine\iengine\iengine\utilities.cpp(149): error C2556: 'std::vector<Predicate *,std::allocator<_Ty>> Utilities::generatePredicates(std::ifstream &)': overloaded function differs only by return type from 'std::vector<Predicate,std::allocator<_Ty>> Utilities::generatePredicates(std::ifstream &)'
+          with
+          [
+              _Ty=Predicate *
+          ]
+          and
+          [
+              _Ty=Predicate
+          ]
+  d:\swinburne\semester3\introduction_to_ai\myfolder\assignment2\teamproject\iengine\iengine\iengine\utilities.h(40): note: see declaration of 'Utilities::generatePredicates'
+d:\swinburne\semester3\introduction_to_ai\myfolder\assignment2\teamproject\iengine\iengine\iengine\utilities.cpp(149): error C2371: 'Utilities::generatePredicates': redefinition; different basic types
+  d:\swinburne\semester3\introduction_to_ai\myfolder\assignment2\teamproject\iengine\iengine\iengine\utilities.h(40): note: see declaration of 'Utilities::generatePredicates'
+d:\swinburne\semester3\introduction_to_ai\myfolder\assignment2\teamproject\iengine\iengine\iengine\utilities.cpp(164): warning C4018: '<': signed/unsigned mismatch
+  BackwardChaining.cpp
+d:\swinburne\semester3\introduction_to_ai\myfolder\assignment2\teamproject\iengine\iengine\iengine\backwardchaining.cpp(22): warning C4018: '<': signed/unsigned mismatch
+d:\swinburne\semester3\introduction_to_ai\myfolder\assignment2\teamproject\iengine\iengine\iengine\backwardchaining.cpp(42): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
-  Skipping... (no relevant changes detected)
-  main.cpp
-  Utilities.cpp
-  TruthTable.cpp
-  IEngine.cpp
-  CompoundPredicate.cpp
-  iEngine.vcxproj -> D:\Swinburne\Semester3\Introduction_to_AI\MyFolder\Assignment2\TeamProject\iEngine\iEngine\Debug\iEngine.exe

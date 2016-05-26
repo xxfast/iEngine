@@ -1,4 +1,3 @@
-//
 //  ForwardChaining.h
 //  iEngine
 //
