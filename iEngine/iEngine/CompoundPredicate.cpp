@@ -20,6 +20,7 @@ CompoundPredicate::~CompoundPredicate()
 {
 }
 
+// Return a vector of predicates of a compound predicate
 vector<Predicate>& CompoundPredicate::getPredicates() const
 {
     vector<Predicate>& lPredicates = *new vector<Predicate>();
@@ -28,6 +29,7 @@ vector<Predicate>& CompoundPredicate::getPredicates() const
     return lPredicates;
 }
 
+// Return a vector of variables of a compound predicate
 vector<Variable>& CompoundPredicate::getVariables() const
 {
     vector<Variable>* temp = new vector<Variable>;
@@ -40,11 +42,13 @@ vector<Variable>& CompoundPredicate::getVariables() const
     return *temp;
 }
 
+// Get the left predicate of a compound predicate
 Predicate& CompoundPredicate::getLeft() const
 {
     return (Predicate&)fLVal;
 }
 
+// Get the right predicate of a compound predicate
 Predicate& CompoundPredicate::getRight() const
 {
     return (Predicate&)fRVal;

@@ -34,6 +34,7 @@ IEngine::~IEngine()
 {
 }
 
+
 bool IEngine::evaluvatePredicate(Predicate aPredicate, map<Variable, bool> aKeyValues)
 {
 	//Evaluate the Given Predicate

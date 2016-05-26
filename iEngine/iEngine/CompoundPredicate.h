@@ -20,15 +20,19 @@ public:
 	CompoundPredicate(Predicate aLeftPredicate, Predicate aRightPredicate, Connective aConnective);
     
 	~CompoundPredicate();
-    
-	// Takes a string and gets the predicate count
-	int getPredicateCount(Predicate& aPredicate);
-	
+   
 	// MARK: Member functions
     
+	// Get the left predicate of a compound predicate
     Predicate& getLeft() const;
+
+	// Get the right predicate of a compound predicate
     Predicate& getRight() const;
+
+	// Return a vector of predicates of a compound predicate
     vector<Predicate>& getPredicates() const;
+
+	// Return a vector of variables of a compound predicate
     vector<Variable>& getVariables() const;
     
     // MARK: Friends
