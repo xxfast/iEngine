@@ -41,6 +41,9 @@ public:
     
     // Takes a string and convert it to others
     static Method stringToMethod(string aString);
+
     static string predicateToString(Predicate& aPredicate);
+
+	static string stripSpaces(string input);
 	
 };
