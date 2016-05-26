@@ -8,7 +8,10 @@
 #include "Utilities.h"
 #include <fstream>
 #include <stdexcept>
-
+#include <iostream>
+#include <string>
+#include <cctype>
+#include <algorithm>
 
 Utilities::Utilities()
 {
@@ -163,3 +166,11 @@ vector<Predicate*>  Utilities::generatePredicates(ifstream& aInput)
     
     return result;
 }
+
+string Utilities::stripSpaces(string input)
+{
+	input.erase(remove_if(input.begin(), input.end(), isspace), input.end());
+	return input;
+}
+
+
