@@ -11,6 +11,7 @@
 #include "Predicate.h"
 #include "IEngine.h"
 #include <vector>
+#include <queue>
 
 using namespace std;
 
@@ -24,14 +25,13 @@ class ForwardChaining
 {
 private:
 	bool fStatus;
-	vector<Predicate> fAgenda;
-	vector<Predicate> fInferred;
-	vector<Predicate> fPredicates;
+	queue<Variable> fAgenda;
+	queue<Variable> fInferred;
 	vector<HornRecord> fHorns;
 
 public:
 	ForwardChaining();
-	ForwardChaining(vector<Predicate> aPredicates);
-	vector<Predicate> evaluate(map<Predicate, int> aHorn, Predicate aAsked);
+	ForwardChaining(vector<Predicate*> aPredicates);
+	queue<Variable>evaluate(Variable aVariableAsked);
 };
 

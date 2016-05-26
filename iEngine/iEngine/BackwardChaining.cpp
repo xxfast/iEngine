@@ -11,35 +11,51 @@ BackwardChaining::~BackwardChaining()
 {
 }
 
-BackwardChaining::BackwardChaining(vector<Predicate> aPredicates)
+BackwardChaining::BackwardChaining(vector<Predicate*> aPredicates)
 {
-	fStatus = false;
-	for ( int i = 0; i < aPredicates.size() - 1; i++)
+	for (int i = 0; i < aPredicates.size() - 1; i++)
 	{
-		if (aPredicates[i].isHorn && !aPredicates[i].isLiteral())
+		if (!aPredicates[i]->isLiteral() && aPredicates[i]->isHorn()) // if it's not literal and it's horn
 		{
-			fPredicates.push_back(aPredicates.back);
+			fHorns[i].fPredicate = aPredicates[i];
+			fHorns[i].fCount = 1;
 		}
 	}
 }
 
-vector<Predicate> BackwardChaining::evaluate(map<Predicate, int> aHorn, Predicate aAsked)
+vector<Variable> BackwardChaining::evaluate(Variable aVariableAsked)
 {
 	
-	fAgenda.push_back(aAsked);
-
-
-
+	fAgenda.push_back(aVariableAsked); //push the asked to the agenda
 	while (!fAgenda.empty())
 	{
 		fInferred.push_back(fAgenda.back());
 		fAgenda.pop_back();
 
-		//for loop all the Predicates, check if the one that crossed is the asked then break
-		if ( == aAsked)
-			break;
-		//minus the count and check if its 0 , add to the agenda
+		for (int i = 0; i < fHorns.size() - 1; i++)
+		{
 
+			auto* lPredicate = dynamic_cast<CompoundPredicate *>(fHorns[i].fPredicate);
+
+			if (lPredicate != NULL) //Compound Predicate
+			{
+				if (lPredicate->getRight().getLeft() == aVariableAsked)
+				{
+					fHorns[i].fCount--;
+					if (fHorns[i].fCount == 0)
+						fAgenda.push_back(lPredicate->getRight().getLeft());
+				}
+			}
+			else // Normal Predicate
+			{
+				if (fHorns[i].fPredicate->getRight() == aVariableAsked)
+				{
+					fHorns[i].fCount--;
+					if (fHorns[i].fCount == 0)
+						fAgenda.push_back((fHorns[i].fPredicate->getRight()));
+				}
+			}
+		}
 	}
 	return fInferred;
 }
