@@ -1,4 +1,3 @@
- //
 //  CompoundPredicate.cpp
 //  iEngine
 //
@@ -10,8 +9,6 @@
 #include "Utilities.h"
 #include "Predicate.h"
 
-
-
 CompoundPredicate::CompoundPredicate(Predicate aLeftPredicate, Predicate aRightPredicate, Connective aConnective)
 {
 	fLVal = aLeftPredicate; 
@@ -22,7 +19,6 @@ CompoundPredicate::CompoundPredicate(Predicate aLeftPredicate, Predicate aRightP
 CompoundPredicate::~CompoundPredicate()
 {
 }
-
 
 int CompoundPredicate::getPredicateCount(Predicate& aPredicate)
 {

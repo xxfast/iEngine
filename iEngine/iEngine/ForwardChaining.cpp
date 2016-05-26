@@ -1,4 +1,3 @@
-//
 //  ForwardChaining.cpp
 //  iEngine
 //
